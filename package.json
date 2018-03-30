@@ -1,0 +1,36 @@
+{
+  "name": "material-ui-tree",
+  "homepage": "https://github.com/shallinta/material-ui-tree",
+  "author": "johnch",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d dist",
+    "start": "babel-node src/index.js",
+    "lint": "eslint --quiet \"**/*.js\"",
+    "release": "standard-version --first-release",
+    "prepublish": "npm run build",
+    "postrelease": "git push && git push origin --tags"
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.3.3",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-qunar": "^1.1.4",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "peerDependencies": {
+    "standard-version": "*"
+  },
+  "engines": {
+    "node": ">=4.0",
+    "npm": ">=3.0"
+  }
+}
