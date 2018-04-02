@@ -4,27 +4,28 @@
   "author": "johnch",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "module": "src/component/index.js",
   "files": [
     "dist"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d dist",
-    "start": "babel-node src/index.js",
+    "build": "webpack --config webpack.config.babel.js",
     "lint": "eslint --quiet \"**/*.js\"",
-    "release": "standard-version --first-release",
-    "prepublish": "npm run build",
-    "postrelease": "git push && git push origin --tags"
+    "release": "standard-version",
+    "prepare": "npm run build",
+    "prepublishOnly": "git push && git push origin --tags"
   },
   "dependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-preset-env": "^1.3.3",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.24.1",
+    "classnames": "^2.2.5",
     "eslint": "^3.19.0",
     "eslint-config-qunar": "^1.1.4",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "material-ui": "^1.0.0-beta.40",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
   },
   "peerDependencies": {
     "standard-version": "*"
@@ -32,5 +33,16 @@
   "engines": {
     "node": ">=4.0",
     "npm": ">=3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.3.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13"
   }
 }
