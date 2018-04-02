@@ -6,6 +6,7 @@
         "node": "current"
       }
     }],
+    "react",
     "stage-0"
   ]
 }

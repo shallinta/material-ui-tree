@@ -3,7 +3,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 module.exports = {
   mode: 'production',
-  entry: 'src/component/index.js',
+  entry: './src/component/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
@@ -15,19 +15,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              minimize: true
-            }
-          }
-        ]
+        use: 'babel-loader'
       }
     ]
   },
   resolve: {
-    modules: ['src', 'node_modules']
+    modules: ['node_modules']
   },
   plugins: [
     new CleanWebpackPlugin(['dist'])
@@ -37,6 +30,11 @@ module.exports = {
       commonjs: 'material-ui',
       commonjs2: 'material-ui',
       amd: 'material-ui'
+    },
+    'material-ui-icons': {
+      commonjs: 'material-ui-icons',
+      commonjs2: 'material-ui-icons',
+      amd: 'material-ui-icons'
     }
   }
 };
