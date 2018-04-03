@@ -17,11 +17,11 @@ class MuiTree extends React.Component {
     title: '',
     expandFirst: false,
     expandAll: false,
+    childrenCountPerPage: 20,
     actionsAlignRight: false,
     getActionsData: null,
     renderLabel: null,
-    requestChildrenData: null,
-    childrenCountPerPage: 50
+    requestChildrenData: null
   };
 
   static propTypes = {
@@ -34,11 +34,11 @@ class MuiTree extends React.Component {
     title: PropTypes.string,
     expandFirst: PropTypes.bool,
     expandAll: PropTypes.bool,
+    childrenCountPerPage: PropTypes.number,
     actionsAlignRight: PropTypes.bool,
     getActionsData: PropTypes.func,
     renderLabel: PropTypes.func,
-    requestChildrenData: PropTypes.func,
-    childrenCountPerPage: PropTypes.number
+    requestChildrenData: PropTypes.func
   };
 
   static childContextTypes = {

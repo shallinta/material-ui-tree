@@ -42,7 +42,7 @@ class MuiTreeLeaf extends React.Component {
         return actionsData.map((actionItem, actionIndex) => {
           const {
             icon,
-            text,
+            label,
             hint,
             onClick = () => {},
             style = {},
@@ -50,11 +50,11 @@ class MuiTreeLeaf extends React.Component {
           } = actionItem;
           const useStyle = Object.assign({ marginLeft: 16 }, style);
           let ButtonComponent = null;
-          if (text) {
+          if (label) {
             ButtonComponent = (
               <Button size="small">
                 { icon ? React.cloneElement(icon, { style: { width: 12, height: 12 } }) : null }
-                { text }
+                { label }
               </Button>
             );
           } else if (icon) {

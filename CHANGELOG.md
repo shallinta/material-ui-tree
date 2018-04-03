@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **#1:** fix some dependencies were packed in library file. ([191aef9](https://github.com/shallinta/material-ui-tree/commit/191aef9))
+* **reduce size:** fix some dependencies were packed in library file.(#1) ([191aef9](https://github.com/shallinta/material-ui-tree/commit/191aef9))
 
 
 

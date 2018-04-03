@@ -26,7 +26,6 @@ class MuiTreeBranch extends React.Component {
 
   static contextTypes = {
     tree: PropTypes.shape({
-      valueName: PropTypes.string,
       childrenName: PropTypes.string,
       expandFirst: PropTypes.bool,
       expandAll: PropTypes.bool,
