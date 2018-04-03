@@ -2,7 +2,7 @@
   "name": "material-ui-tree",
   "homepage": "https://github.com/shallinta/material-ui-tree",
   "author": "johnch",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "module": "src/component/index.js",
   "files": [
