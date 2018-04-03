@@ -18,14 +18,10 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "eslint": "^3.19.0",
-    "eslint-config-qunar": "^1.1.4",
-    "eslint-plugin-import": "^2.2.0",
     "material-ui": "^1.0.0-beta.40",
     "material-ui-icons": "^1.0.0-beta.36",
     "prop-types": "^15.6.1",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react": "^16.3.0"
   },
   "engines": {
     "node": ">=4.0",
@@ -40,6 +36,9 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "eslint": "^3.19.0",
+    "eslint-config-qunar": "^1.1.4",
+    "eslint-plugin-import": "^2.2.0",
     "standard-version": "^4.3.0",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13"
