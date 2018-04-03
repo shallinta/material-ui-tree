@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
+import { withStyles, Paper, Typography } from 'material-ui';
 import MuiTreeBranch from './tree-branch';
 import styles from './style';
 
