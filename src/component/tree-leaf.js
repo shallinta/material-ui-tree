@@ -15,6 +15,7 @@ class MuiTreeLeaf extends React.Component {
     classes: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
     layer: PropTypes.number.isRequired,
+    chdIndex: PropTypes.array.isRequired,
     onClick: PropTypes.func,
     expand: PropTypes.bool
   };
@@ -35,9 +36,9 @@ class MuiTreeLeaf extends React.Component {
 
   getActions(data) {
     const { getActionsData, actionsAlignRight } = this.context.tree;
-    const { classes, layer, expand } = this.props;
+    const { classes, layer, chdIndex, expand } = this.props;
     if (getActionsData && typeof getActionsData === 'function') {
-      const actionsData = getActionsData(data, layer, expand);
+      const actionsData = getActionsData(data, layer, chdIndex, expand);
       if (actionsData && actionsData.length) {
         return actionsData.map((actionItem, actionIndex) => {
           const {
