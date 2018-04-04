@@ -94,10 +94,10 @@ class MuiTreeLeaf extends React.Component {
   }
 
   getLabel() {
-    const { data } = this.props;
+    const { data, expand } = this.props;
     const { labelName, renderLabel } = this.context.tree;
     if (renderLabel && typeof renderLabel === 'function') {
-      return renderLabel(data);
+      return renderLabel(data, expand);
     }
     return data[labelName];
   }
