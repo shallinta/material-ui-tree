@@ -9,4 +9,12 @@ const getTreeLeafDataByIndexArray = (data, indexArray, childrenName = 'children'
   return r;
 };
 
+const withChildrenName =
+  childrenName =>
+  (data, indexArray) =>
+  getTreeLeafDataByIndexArray(data, indexArray, childrenName);
+
+export {
+  withChildrenName
+};
 export default getTreeLeafDataByIndexArray;

@@ -116,6 +116,7 @@ class TreeDemo extends React.Component {
       return [
         {
           icon: <AddIcon className={classes.icon} />,
+          label: 'new',
           hint: 'Insert file',
           onClick: () => {
             const data = { ...this.state.data };
@@ -188,7 +189,7 @@ const styles = () => ({
     margin: 20
   },
   icon: {
-    fontSize: 14
+    fontSize: 20
   },
   leaf: {
     display: 'flex',
