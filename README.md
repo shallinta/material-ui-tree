@@ -10,7 +10,7 @@
 
 [![NPM](https://nodei.co/npm/material-ui-tree.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/material-ui-tree)
 > A react tree component with material-ui.  
-
+> See demo page: [Material-ui-tree Demo](https://wkp03p2jrl.codesandbox.io/)
 
 ### Installation
 Available as npm package.
@@ -30,6 +30,9 @@ npm install --save
 
 
 ### Usage
+[![Edit material-ui-tree demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/wkp03p2jrl) See demo page code.
+
+<iframe src="https://codesandbox.io/embed/wkp03p2jrl" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 
 ### Options
