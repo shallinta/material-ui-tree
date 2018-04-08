@@ -32,7 +32,7 @@ npm install --save
 ### Usage
 >  See demo page code:  
 
-[![Edit material-ui-tree demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/wkp03p2jrl)
+[![Edit material-ui-tree demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/wkp03p2jrl)
 
 
 ### Options

@@ -54,7 +54,7 @@ class TreeDemo extends React.Component {
         return (
           <Typography
             viriant="body1"
-            style={{ display: 'flex', alignItems: 'center' }}
+            className={classes.leaf}
           >
             <FolderOpenIcon className={classes.icon} />
             {path}
@@ -64,7 +64,7 @@ class TreeDemo extends React.Component {
       return (
         <Typography
           viriant="body1"
-          style={{ display: 'flex', alignItems: 'center' }}
+          className={classes.leaf}
         >
           <FolderIcon className={classes.icon} />
           {path}
@@ -76,7 +76,7 @@ class TreeDemo extends React.Component {
         return (
           <Typography
             viriant="body2"
-            style={{ display: 'flex', alignItems: 'center' }}
+            className={classes.leaf}
           >
             <SettingsIcon className={classes.icon} />
             {path}
@@ -87,7 +87,7 @@ class TreeDemo extends React.Component {
         return (
           <Typography
             viriant="body2"
-            style={{ display: 'flex', alignItems: 'center' }}
+            className={classes.leaf}
           >
             <DescriptionIcon className={classes.icon} />
             {path}
@@ -97,7 +97,7 @@ class TreeDemo extends React.Component {
       return (
         <Typography
           viriant="body2"
-          style={{ display: 'flex', alignItems: 'center' }}
+          className={classes.leaf}
         >
           <InsertDriveFileIcon className={classes.icon} />
           {path}
