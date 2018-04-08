@@ -30,9 +30,9 @@ npm install --save
 
 
 ### Usage
-[![Edit material-ui-tree demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/wkp03p2jrl) See demo page code.
+>  See demo page code:  
 
-<iframe src="https://codesandbox.io/embed/wkp03p2jrl" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+[![Edit material-ui-tree demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/wkp03p2jrl)
 
 
 ### Options
