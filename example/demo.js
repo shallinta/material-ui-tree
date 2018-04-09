@@ -39,11 +39,13 @@ class TreeDemo extends React.Component {
           this.setState({ data }, () => {
             doExpand();
           });
+        } else {
+          doExpand();
         }
-        doExpand();
       });
+    } else {
+      doExpand();
     }
-    doExpand();
   };
 
   renderTreeLeafLabel = (leafData, expand) => {
