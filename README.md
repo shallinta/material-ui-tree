@@ -24,7 +24,7 @@ npm install --save
  react-dom
  prop-types
  classnames
- material-ui
+ material-ui@next
  material-ui-icons
 ```
 
