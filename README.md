@@ -58,11 +58,23 @@ npm install --save
 
 ***actionsAlignRight***: *(bool)* Whether the tree leaf action buttons aligns to right side. Action buttons will follow behind leaf label if it's false, or else will be aligned to right side. Default to `false`.  
 
-***getActionsData***: *(func)* The method to get data to render action buttons, with arguments `data`(object, current leaf data), `layer`(number, leaf layer in the tree), `chdIndex`(number array, leaf indexs from tree root), `expand`(bool, leaf expand status). Should return an array of buttons data including keys: `icon`, `label`, `hint`, `onClick`, `style={}`. At least one of `label` key and `icon` key are required.  
+***getActionsData***: *(func)* The method to get data to render action buttons, with arguments:  
+- `data` : object, current leaf data  
+- `chdIndex` : number array, leaf indexs from tree root  
+- `expand` : bool, leaf expand status  
+- `doExpand` : func, callback to expand current leaf's child branch  
+Should return an array of buttons data including keys: `icon`, `label`, `hint`, `onClick`, `style={}`. At least one of `label` key and `icon` key are required.  
 
-***renderLabel***: *(func)* The method to render tree leaf label, with arguments `data`(object, current leaf data) and `expand`(bool, current leaf expand status). If this is set, `labelName` option will be ignored.  
+***renderLabel***: *(func)* The method to render tree leaf label, with arguments:   
+- `data` : object, current leaf data   
+- `expand` : bool, current leaf expand status  
+If this is set, `labelName` option will be ignored.  
 
-***requestChildrenData***: *(func)* The method to request children data of tree leaf dynamically, with arguments `data`(object, current leaf data), `chdIndex`(number array, leaf indexs from tree root), `doExpand`(func, callback to expand current leaf's child branch). This function will not be called until the current leaf has no children data.  
+***requestChildrenData***: *(func)* The method to request children data of tree leaf dynamically, with arguments:  
+- `data` : object, current leaf data  
+- `chdIndex` : number array, leaf indexs from tree root  
+- `doExpand` : func, callback to expand current leaf's child branch  
+This function will not be called until the current leaf has no children data.  
 
 
 ### Recently updated?

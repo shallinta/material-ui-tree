@@ -14,10 +14,10 @@ class MuiTreeLeaf extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
-    layer: PropTypes.number.isRequired,
     chdIndex: PropTypes.array.isRequired,
     onClick: PropTypes.func,
-    expand: PropTypes.bool
+    expand: PropTypes.bool,
+    doExpand: PropTypes.func.isRequired
   };
 
   static contextTypes = {
@@ -36,9 +36,9 @@ class MuiTreeLeaf extends React.Component {
 
   getActions(data) {
     const { getActionsData, actionsAlignRight } = this.context.tree;
-    const { classes, layer, chdIndex, expand } = this.props;
+    const { classes, chdIndex, expand, doExpand } = this.props;
     if (getActionsData && typeof getActionsData === 'function') {
-      const actionsData = getActionsData(data, layer, chdIndex, expand);
+      const actionsData = getActionsData(data, chdIndex, expand, doExpand);
       if (actionsData && actionsData.length) {
         return actionsData.map((actionItem, actionIndex) => {
           const {
