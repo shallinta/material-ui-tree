@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/shallinta/material-ui-tree/compare/v1.0.4...v1.0.5) (2018-04-11)
+
+
+### Bug Fixes
+
+* delete `layer` argument and add `doExpand` argument to `getActionsData` callback. ([43d1013](https://github.com/shallinta/material-ui-tree/commit/43d1013))
+* style from classes ([5b3fcb9](https://github.com/shallinta/material-ui-tree/commit/5b3fcb9))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/shallinta/material-ui-tree/compare/v1.0.3...v1.0.4) (2018-04-08)
 
