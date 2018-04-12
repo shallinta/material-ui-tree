@@ -7,7 +7,8 @@ const TreeBranchChildrenPage = (props, context) => {
     data,
     expand,
     layer,
-    chdIndex
+    chdIndex,
+    startIndex
   } = props;
   const { valueName } = context.tree;
   return (
@@ -19,7 +20,7 @@ const TreeBranchChildrenPage = (props, context) => {
             expand={expand}
             data={item}
             layer={layer + 1}
-            chdIndex={chdIndex.concat(nextChdIndex)}
+            chdIndex={chdIndex.concat(startIndex + nextChdIndex)}
           />
         ))
       }
@@ -31,7 +32,8 @@ TreeBranchChildrenPage.propTypes = {
   data: PropTypes.array.isRequired,
   expand: PropTypes.bool.isRequired,
   layer: PropTypes.number.isRequired,
-  chdIndex: PropTypes.array.isRequired
+  chdIndex: PropTypes.array.isRequired,
+  startIndex: PropTypes.number.isRequired
 };
 
 TreeBranchChildrenPage.contextTypes = {

@@ -105,6 +105,7 @@ class MuiTreeBranch extends React.Component {
         expand={this.state.expand}
         layer={layer}
         chdIndex={chdIndex}
+        startIndex={startIndex}
       />
     );
   }
