@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { withStyles, ListItem, ListItemIcon, ListItemText, Button, IconButton, Tooltip } from 'material-ui';
-import { AddCircleOutline as AddIcon, RemoveCircleOutline as RemoveIcon } from 'material-ui-icons';
+import { withStyles } from 'material-ui/styles';
+import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Button, { IconButton } from 'material-ui/Button';
+import Tooltip from 'material-ui/Tooltip';
+import AddIcon from 'material-ui-icons/AddCircleOutline';
+import RemoveIcon from 'material-ui-icons/RemoveCircleOutline';
 import styles from './style';
 
 class MuiTreeLeaf extends React.Component {

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { withStyles, Collapse, List, ListItem, ListItemIcon, ListItemText } from 'material-ui';
-import { MoreVert as MoreVertIcon } from 'material-ui-icons';
+import { withStyles } from 'material-ui/styles';
+import Collapse from 'material-ui/transitions/Collapse';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import MoreVertIcon from 'material-ui-icons/MoreVert';
 import MuiTreeLeaf from './tree-leaf';
 import TreeBranchChildrenPage from './tree-branch-children-page';
 import styles from './style';
