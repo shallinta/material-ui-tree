@@ -18,9 +18,19 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _materialUi = require('material-ui');
+var _styles = require('material-ui/styles');
 
-var _materialUiIcons = require('material-ui-icons');
+var _Collapse = require('material-ui/transitions/Collapse');
+
+var _Collapse2 = _interopRequireDefault(_Collapse);
+
+var _List = require('material-ui/List');
+
+var _List2 = _interopRequireDefault(_List);
+
+var _MoreVert = require('material-ui-icons/MoreVert');
+
+var _MoreVert2 = _interopRequireDefault(_MoreVert);
 
 var _treeLeaf = require('./tree-leaf');
 
@@ -174,10 +184,10 @@ var MuiTreeBranch = function (_React$Component) {
       var pageCount = Math.ceil(children.length / childrenCountPerPage);
 
       return _react2.default.createElement(
-        _materialUi.Collapse,
+        _Collapse2.default,
         { 'in': expand, unmountOnExit: true },
         _react2.default.createElement(
-          _materialUi.List,
+          _List2.default,
           {
             dense: true,
             component: 'div',
@@ -194,7 +204,7 @@ var MuiTreeBranch = function (_React$Component) {
           }),
           this.renderChildren(),
           this.state.expand && childrenPage + 1 < pageCount ? _react2.default.createElement(
-            _materialUi.ListItem,
+            _List.ListItem,
             {
               dense: true,
               button: true,
@@ -203,11 +213,11 @@ var MuiTreeBranch = function (_React$Component) {
               style: { paddingLeft: 48 }
             },
             _react2.default.createElement(
-              _materialUi.ListItemIcon,
+              _List.ListItemIcon,
               null,
-              _react2.default.createElement(_materialUiIcons.MoreVert, { className: (0, _classnames2.default)(classes.treeIcon, classes.treeIconButton) })
+              _react2.default.createElement(_MoreVert2.default, { className: (0, _classnames2.default)(classes.treeIcon, classes.treeIconButton) })
             ),
-            _react2.default.createElement(_materialUi.ListItemText, {
+            _react2.default.createElement(_List.ListItemText, {
               inset: true,
               disableTypography: true,
               primary: '\u5DF2\u52A0\u8F7D' + (childrenPage + 1) * childrenCountPerPage + '/' + children.length + '\uFF0C\u70B9\u51FB\u52A0\u8F7D\u66F4\u591A...',
@@ -245,4 +255,4 @@ MuiTreeBranch.contextTypes = {
     childrenCountPerPage: _propTypes2.default.number
   })
 };
-exports.default = (0, _materialUi.withStyles)(_style2.default, { withTheme: true })(MuiTreeBranch);
+exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTreeBranch);
