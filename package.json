@@ -3,7 +3,7 @@
   "homepage": "https://github.com/shallinta/material-ui-tree",
   "keywords": "tree, react, component, material design, material-ui",
   "author": "johnch",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/component/index.js",
   "module": "src/component/index.js",
   "files": [

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/shallinta/material-ui-tree/compare/v1.0.6...v1.0.7) (2018-04-18)
+
+
+### Bug Fixes
+
+* **build:** build package by babel only ([b69f2e6](https://github.com/shallinta/material-ui-tree/commit/b69f2e6))
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/shallinta/material-ui-tree/compare/v1.0.5...v1.0.6) (2018-04-12)
 
