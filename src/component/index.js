@@ -90,9 +90,14 @@ class MuiTree extends React.Component {
       classes,
       className,
       data,
-      title
+      title,
+      labelName,
+      childrenName
     } = this.props;
 
+    const l = (labelName in data);
+    var cm = [];
+    if (childrenName in data) { cm = data[childrenName]; }
     return (
       <Paper className={cn(classes.paper, className)}>
         {
@@ -102,7 +107,11 @@ class MuiTree extends React.Component {
             )
             : null
         }
-        <MuiTreeBranch data={data} expand layer={0} />
+        {
+          l ?
+            ( <MuiTreeBranch data={data} expand layer={0} /> )
+            : ( cm.map ( d=> { return( <MuiTreeBranch data={d} expand layer={0} /> ) }) )
+        }
       </Paper>
     );
   }
