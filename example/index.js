@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CssBaseline from 'material-ui/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import blue from 'material-ui/colors/blue';
-import pink from 'material-ui/colors/pink';
+import { MuiThemeProvider, createMuiTheme, CssBaseline } from '@material-ui/core';
+import { blue, pink } from '@material-ui/colors';
 import TreeDemo from './demo';
 
 const theme = createMuiTheme({

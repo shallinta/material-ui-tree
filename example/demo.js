@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import superagent from 'superagent';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Switch from 'material-ui/Switch';
-import FolderIcon from 'material-ui-icons/Folder';
-import FolderOpenIcon from 'material-ui-icons/FolderOpen';
-import SettingsIcon from 'material-ui-icons/Settings';
-import DescriptionIcon from 'material-ui-icons/Description';
-import InsertDriveFileIcon from 'material-ui-icons/InsertDriveFile';
-import AddIcon from 'material-ui-icons/Add';
-import DeleteIcon from 'material-ui-icons/Delete';
+import { withStyles, Typography, Switch } from '@material-ui/core';
+import FolderIcon from '@material-ui/icons/Folder';
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import SettingsIcon from '@material-ui/icons/Settings';
+import DescriptionIcon from '@material-ui/icons/Description';
+import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Tree, { getTreeLeafDataByIndexArray } from 'material-ui-tree';
 
 class TreeDemo extends React.Component {

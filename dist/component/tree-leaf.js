@@ -20,23 +20,13 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _styles = require('material-ui/styles');
+var _core = require('@material-ui/core');
 
-var _List = require('material-ui/List');
-
-var _Button = require('material-ui/Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _Tooltip = require('material-ui/Tooltip');
-
-var _Tooltip2 = _interopRequireDefault(_Tooltip);
-
-var _AddCircleOutline = require('material-ui-icons/AddCircleOutline');
+var _AddCircleOutline = require('@material-ui/icons/AddCircleOutline');
 
 var _AddCircleOutline2 = _interopRequireDefault(_AddCircleOutline);
 
-var _RemoveCircleOutline = require('material-ui-icons/RemoveCircleOutline');
+var _RemoveCircleOutline = require('@material-ui/icons/RemoveCircleOutline');
 
 var _RemoveCircleOutline2 = _interopRequireDefault(_RemoveCircleOutline);
 
@@ -110,14 +100,16 @@ var MuiTreeLeaf = function (_React$Component) {
             var ButtonComponent = null;
             if (label) {
               ButtonComponent = _react2.default.createElement(
-                _Button2.default,
+                _core.Button,
                 { size: 'small' },
-                icon ? _react2.default.cloneElement(icon, { style: { width: 12, height: 12 } }) : null,
+                icon ? _react2.default.cloneElement(icon, {
+                  style: { width: 12, height: 12 }
+                }) : null,
                 label
               );
             } else if (icon) {
               ButtonComponent = _react2.default.createElement(
-                _Button.IconButton,
+                _core.IconButton,
                 null,
                 icon
               );
@@ -135,7 +127,7 @@ var MuiTreeLeaf = function (_React$Component) {
             var WrappedButtonComponent = ButtonComponent;
             if (WrappedButtonComponent && hint) {
               WrappedButtonComponent = _react2.default.createElement(
-                _Tooltip2.default,
+                _core.Tooltip,
                 {
                   title: hint,
                   placement: actionsAlignRight ? 'left' : 'right'
@@ -180,7 +172,7 @@ var MuiTreeLeaf = function (_React$Component) {
 
 
       return _react2.default.createElement(
-        _List.ListItem,
+        _core.ListItem,
         {
           dense: true,
           button: true,
@@ -189,11 +181,11 @@ var MuiTreeLeaf = function (_React$Component) {
           onClick: onClick
         },
         _react2.default.createElement(
-          _List.ListItemIcon,
+          _core.ListItemIcon,
           null,
           expand ? _react2.default.createElement(_RemoveCircleOutline2.default, { className: classes.treeIcon }) : _react2.default.createElement(_AddCircleOutline2.default, { className: classes.treeIcon })
         ),
-        _react2.default.createElement(_List.ListItemText, {
+        _react2.default.createElement(_core.ListItemText, {
           inset: true,
           primary: this.getLabel(),
           className: (0, _classnames2.default)(classes.treeText, _defineProperty({}, classes.treeTextFlex, actionsAlignRight))
@@ -227,4 +219,4 @@ MuiTreeLeaf.contextTypes = {
     renderLabel: _propTypes2.default.func
   })
 };
-exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTreeLeaf);
+exports.default = (0, _core.withStyles)(_style2.default, { withTheme: true })(MuiTreeLeaf);
