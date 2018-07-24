@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
+import { withStyles, Paper, Typography } from '@material-ui/core';
 import MuiTreeBranch from './tree-branch';
 import styles from './style';
 
@@ -87,21 +85,16 @@ class MuiTree extends React.Component {
 
   render() {
     const {
-      classes,
-      className,
-      data,
-      title
+      classes, className, data, title
     } = this.props;
 
     return (
       <Paper className={cn(classes.paper, className)}>
-        {
-          title
-            ? (
-              <Typography variant="caption" className={classes.caption}>{title}</Typography>
-            )
-            : null
-        }
+        {title ? (
+          <Typography variant='caption' className={classes.caption}>
+            {title}
+          </Typography>
+        ) : null}
         <MuiTreeBranch data={data} expand layer={0} />
       </Paper>
     );

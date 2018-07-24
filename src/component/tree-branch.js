@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import Collapse from 'material-ui/transitions/Collapse';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import MoreVertIcon from 'material-ui-icons/MoreVert';
+import {
+  withStyles,
+  Collapse,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from '@material-ui/core';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MuiTreeLeaf from './tree-leaf';
 import TreeBranchChildrenPage from './tree-branch-children-page';
 import styles from './style';
@@ -65,20 +70,25 @@ class MuiTreeBranch extends React.Component {
 
   handleClick = () => {
     const { expand } = this.state;
-    if (!expand) { // 即将展开
-      if (this.getChildren().length === 0) { // 没有子节点
+    if (!expand) {
+      // 即将展开
+      if (this.getChildren().length === 0) {
+        // 没有子节点
         const { requestChildrenData } = this.context.tree;
         const { data, chdIndex } = this.props;
         if (requestChildrenData && typeof requestChildrenData === 'function') {
           // 通过配置的方法请求数据
           requestChildrenData(data, chdIndex, this.doExpand);
-        } else { // 无子节点
+        } else {
+          // 无子节点
           this.doExpand();
         }
-      } else { // 有子节点 直接展开
+      } else {
+        // 有子节点 直接展开
         this.doExpand();
       }
-    } else { // 将收起
+    } else {
+      // 将收起
       this.doExpand();
     }
   };
@@ -90,10 +100,7 @@ class MuiTreeBranch extends React.Component {
   };
 
   renderChildrenByPage(page) {
-    const {
-      layer,
-      chdIndex
-    } = this.props;
+    const { layer, chdIndex } = this.props;
     const { childrenCountPerPage } = this.context.tree;
     const children = this.getChildren();
     const startIndex = page * childrenCountPerPage;
@@ -125,12 +132,7 @@ class MuiTreeBranch extends React.Component {
 
   render() {
     const {
-      classes,
-      className,
-      data,
-      expand,
-      layer,
-      chdIndex
+      classes, className, data, expand, layer, chdIndex
     } = this.props;
     const { childrenPage } = this.state;
     const { childrenCountPerPage } = this.context.tree;
@@ -141,7 +143,7 @@ class MuiTreeBranch extends React.Component {
       <Collapse in={expand} unmountOnExit>
         <List
           dense
-          component="div"
+          component='div'
           className={className}
           style={{ paddingLeft: layer > 0 ? 32 : 0 }}
         >
@@ -153,30 +155,30 @@ class MuiTreeBranch extends React.Component {
             chdIndex={chdIndex}
             doExpand={this.doExpand}
           />
-          { this.renderChildren() }
-          {
-            this.state.expand && (childrenPage + 1 < pageCount)
-              ? (
-                <ListItem
-                  dense
-                  button
-                  onClick={this.loadMore}
-                  className={classes.treeNode}
-                  style={{ paddingLeft: 48 }}
-                >
-                  <ListItemIcon>
-                    <MoreVertIcon className={cn(classes.treeIcon, classes.treeIconButton)} />
-                  </ListItemIcon>
-                  <ListItemText
-                    inset
-                    disableTypography
-                    primary={`已加载${(childrenPage + 1) * childrenCountPerPage}/${children.length}，点击加载更多...`}
-                    className={cn(classes.treeText, classes.treeTextButton)}
-                  />
-                </ListItem>
-              )
-              : null
-          }
+          {this.renderChildren()}
+          {this.state.expand && childrenPage + 1 < pageCount ? (
+            <ListItem
+              dense
+              button
+              onClick={this.loadMore}
+              className={classes.treeNode}
+              style={{ paddingLeft: 48 }}
+            >
+              <ListItemIcon>
+                <MoreVertIcon
+                  className={cn(classes.treeIcon, classes.treeIconButton)}
+                />
+              </ListItemIcon>
+              <ListItemText
+                inset
+                disableTypography
+                primary={`已加载${(childrenPage + 1) * childrenCountPerPage}/${
+                  children.length
+                }，点击加载更多...`}
+                className={cn(classes.treeText, classes.treeTextButton)}
+              />
+            </ListItem>
+          ) : null}
         </List>
       </Collapse>
     );

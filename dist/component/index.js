@@ -19,15 +19,7 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _styles = require('material-ui/styles');
-
-var _Paper = require('material-ui/Paper');
-
-var _Paper2 = _interopRequireDefault(_Paper);
-
-var _Typography = require('material-ui/Typography');
-
-var _Typography2 = _interopRequireDefault(_Typography);
+var _core = require('@material-ui/core');
 
 var _treeBranch = require('./tree-branch');
 
@@ -101,10 +93,10 @@ var MuiTree = function (_React$Component) {
 
 
       return _react2.default.createElement(
-        _Paper2.default,
+        _core.Paper,
         { className: (0, _classnames2.default)(classes.paper, className) },
         title ? _react2.default.createElement(
-          _Typography2.default,
+          _core.Typography,
           { variant: 'caption', className: classes.caption },
           title
         ) : null,
@@ -159,4 +151,4 @@ MuiTree.childContextTypes = {
     childrenCountPerPage: _propTypes2.default.number
   })
 };
-exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTree);
+exports.default = (0, _core.withStyles)(_style2.default, { withTheme: true })(MuiTree);

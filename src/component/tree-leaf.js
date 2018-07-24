@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Button, { IconButton } from 'material-ui/Button';
-import Tooltip from 'material-ui/Tooltip';
-import AddIcon from 'material-ui-icons/AddCircleOutline';
-import RemoveIcon from 'material-ui-icons/RemoveCircleOutline';
+import {
+  withStyles,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Button,
+  Tooltip,
+  IconButton
+} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/AddCircleOutline';
+import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
 import styles from './style';
 
 class MuiTreeLeaf extends React.Component {
@@ -40,7 +45,9 @@ class MuiTreeLeaf extends React.Component {
 
   getActions(data) {
     const { getActionsData, actionsAlignRight } = this.context.tree;
-    const { classes, chdIndex, expand, doExpand } = this.props;
+    const {
+      classes, chdIndex, expand, doExpand
+    } = this.props;
     if (getActionsData && typeof getActionsData === 'function') {
       const actionsData = getActionsData(data, chdIndex, expand, doExpand);
       if (actionsData && actionsData.length) {
@@ -57,17 +64,17 @@ class MuiTreeLeaf extends React.Component {
           let ButtonComponent = null;
           if (label) {
             ButtonComponent = (
-              <Button size="small">
-                { icon ? React.cloneElement(icon, { style: { width: 12, height: 12 } }) : null }
-                { label }
+              <Button size='small'>
+                {icon
+                  ? React.cloneElement(icon, {
+                    style: { width: 12, height: 12 }
+                  })
+                  : null}
+                {label}
               </Button>
             );
           } else if (icon) {
-            ButtonComponent = (
-              <IconButton>
-                { icon }
-              </IconButton>
-            );
+            ButtonComponent = <IconButton>{icon}</IconButton>;
           }
           if (ButtonComponent) {
             ButtonComponent = React.cloneElement(ButtonComponent, {
@@ -85,13 +92,15 @@ class MuiTreeLeaf extends React.Component {
                 title={hint}
                 placement={actionsAlignRight ? 'left' : 'right'}
               >
-                { ButtonComponent }
+                {ButtonComponent}
               </Tooltip>
             );
           }
-          return WrappedButtonComponent ? React.cloneElement(WrappedButtonComponent, {
-            key: `fab-list-item-${actionIndex + 1}`
-          }) : null;
+          return WrappedButtonComponent
+            ? React.cloneElement(WrappedButtonComponent, {
+              key: `fab-list-item-${actionIndex + 1}`
+            })
+            : null;
         });
       }
     }
@@ -115,15 +124,9 @@ class MuiTreeLeaf extends React.Component {
 
   render() {
     const {
-      classes,
-      data,
-      onClick,
-      expand
+      classes, data, onClick, expand
     } = this.props;
-    const {
-      valueName,
-      actionsAlignRight
-    } = this.context.tree;
+    const { valueName, actionsAlignRight } = this.context.tree;
 
     return (
       <ListItem
@@ -134,22 +137,20 @@ class MuiTreeLeaf extends React.Component {
         onClick={onClick}
       >
         <ListItemIcon>
-          {
-            expand
-              ? (<RemoveIcon className={classes.treeIcon} />)
-              : (<AddIcon className={classes.treeIcon} />)
-          }
+          {expand ? (
+            <RemoveIcon className={classes.treeIcon} />
+          ) : (
+            <AddIcon className={classes.treeIcon} />
+          )}
         </ListItemIcon>
         <ListItemText
           inset
           primary={this.getLabel()}
-          className={cn(classes.treeText, { [classes.treeTextFlex]: actionsAlignRight })}
+          className={cn(classes.treeText, {
+            [classes.treeTextFlex]: actionsAlignRight
+          })}
         />
-        {
-          this.state.showButtons
-            ? this.getActions(data)
-            : null
-        }
+        {this.state.showButtons ? this.getActions(data) : null}
       </ListItem>
     );
   }
