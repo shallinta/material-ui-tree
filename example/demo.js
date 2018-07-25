@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import superagent from 'superagent';
-import { withStyles, Typography, Switch } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Switch from '@material-ui/core/Switch';
 import FolderIcon from '@material-ui/icons/Folder';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import SettingsIcon from '@material-ui/icons/Settings';
