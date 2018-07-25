@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.11"></a>
+## [1.0.11](https://github.com/shallinta/material-ui-tree/compare/v1.0.10...v1.0.11) (2018-07-25)
+
+
+### Bug Fixes
+
+* my stupid import mistakes ([ca9f95a](https://github.com/shallinta/material-ui-tree/commit/ca9f95a))
+
+
+
 <a name="1.0.10"></a>
 ## [1.0.10](https://github.com/shallinta/material-ui-tree/compare/v1.0.9...v1.0.10) (2018-07-25)
 
