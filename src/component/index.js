@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
+import { withStyles, Paper, Typography } from '@material-ui/core';
 import MuiTreeBranch from './tree-branch';
 import styles from './style';
 
@@ -96,7 +94,7 @@ class MuiTree extends React.Component {
         {
           title
             ? (
-              <Typography variant="caption" className={classes.caption}>{title}</Typography>
+              <Typography variant='caption' className={classes.caption}>{title}</Typography>
             )
             : null
         }

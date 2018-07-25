@@ -11,8 +11,8 @@ const getTreeLeafDataByIndexArray = (data, indexArray, childrenName = 'children'
 
 const withChildrenName =
   childrenName =>
-  (data, indexArray) =>
-  getTreeLeafDataByIndexArray(data, indexArray, childrenName);
+    (data, indexArray) =>
+      getTreeLeafDataByIndexArray(data, indexArray, childrenName);
 
 export {
   withChildrenName
