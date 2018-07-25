@@ -7,8 +7,6 @@ import Typography from 'material-ui/Typography';
 import MuiTreeBranch from './tree-branch';
 import styles from './style';
 
-export getTreeLeafDataByIndexArray from '../utils/getTreeLeafDataByIndexArray';
-
 class MuiTree extends React.Component {
   static defaultProps = {
     className: '',
@@ -109,3 +107,4 @@ class MuiTree extends React.Component {
 }
 
 export default withStyles(styles, { withTheme: true })(MuiTree);
+export getTreeLeafDataByIndexArray from '../utils/getTreeLeafDataByIndexArray';

@@ -49,8 +49,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-exports.getTreeLeafDataByIndexArray = _getTreeLeafDataByIndexArray3.default;
-
 var MuiTree = function (_React$Component) {
   _inherits(MuiTree, _React$Component);
 
@@ -160,3 +158,4 @@ MuiTree.childContextTypes = {
   })
 };
 exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTree);
+exports.getTreeLeafDataByIndexArray = _getTreeLeafDataByIndexArray3.default;
