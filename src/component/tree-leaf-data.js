@@ -5,15 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import MuiTreeLeaf from './tree-leaf'
+import MuiTreeLeaf from './tree-leaf';
 import styles from './style';
 
 class MuiTreeLeafData extends React.Component {
-  static defaultProps = {
-    onClick: () => { },
-    expand: false
-  };
-
   static propTypes = {
     classes: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
@@ -32,6 +27,11 @@ class MuiTreeLeafData extends React.Component {
       renderLabel: PropTypes.func,
       renderLabelIcon: PropTypes.func
     })
+  };
+
+  static defaultProps = {
+    onClick: () => { },
+    expand: false
   };
 
   state = {
@@ -122,8 +122,13 @@ class MuiTreeLeafData extends React.Component {
     if (renderLabelIcon && typeof renderLabelIcon === 'function') {
       const LabelIconElement = renderLabelIcon(data, childrenName, expand);
 
-      return LabelIconElement && React.cloneElement(LabelIconElement, { className: classes.treeIcon })
+      return LabelIconElement
+        && React.cloneElement(LabelIconElement, {
+          className: classes.treeIcon
+        });
     }
+
+    return null;
   }
 
   handleButtonClick = (e, onClick) => {
@@ -134,12 +139,12 @@ class MuiTreeLeafData extends React.Component {
 
   render() {
     const {
-      classes, data, onClick, expand
+      classes, data, onClick
     } = this.props;
     const { valueName, actionsAlignRight } = this.context.tree;
 
     return (
-      <MuiTreeLeaf 
+      <MuiTreeLeaf
         onClick={onClick}
         id={`tree-leaf-${data[valueName]}`}
         icon={this.getLabelIcon()}

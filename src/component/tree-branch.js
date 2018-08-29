@@ -4,9 +4,6 @@ import cn from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MuiTreeLeaf from './tree-leaf';
 import MuiTreeLeafData from './tree-leaf-data';
@@ -14,13 +11,6 @@ import TreeBranchChildrenPage from './tree-branch-children-page';
 import styles from './style';
 
 class MuiTreeBranch extends React.Component {
-  static defaultProps = {
-    className: '',
-    data: {},
-    expand: false,
-    chdIndex: []
-  };
-
   static propTypes = {
     classes: PropTypes.object.isRequired,
     layer: PropTypes.number.isRequired,
@@ -39,6 +29,13 @@ class MuiTreeBranch extends React.Component {
       childrenCountPerPage: PropTypes.number,
       perPage: PropTypes.bool
     })
+  };
+
+  static defaultProps = {
+    className: '',
+    data: {},
+    expand: false,
+    chdIndex: []
   };
 
   constructor(props, context) {
@@ -62,11 +59,33 @@ class MuiTreeBranch extends React.Component {
     return data[childrenName] || [];
   }
 
-  doExpand = () => {
-    this.setState(({ expand }) => ({
-      expand: !expand
-    }));
-  };
+  getLoadMoreText() {
+    const { childrenPage } = this.state;
+    const { renderLoadMoreText, childrenCountPerPage } = this.context.tree;
+    const children = this.getChildren();
+    if (renderLoadMoreText && typeof renderLoadMoreText === 'function') {
+      const LoadMoreTextElement =
+        renderLoadMoreText(childrenPage, childrenCountPerPage, children.length);
+
+      return LoadMoreTextElement;
+    }
+
+    return null;
+  }
+
+  getLoadLessText() {
+    const { childrenPage } = this.state;
+    const { renderLoadLessText, childrenCountPerPage } = this.context.tree;
+    const children = this.getChildren();
+    if (renderLoadLessText && typeof renderLoadLessText === 'function') {
+      const LoadLessTextElement =
+        renderLoadLessText(childrenPage, childrenCountPerPage, children.length);
+
+      return LoadLessTextElement;
+    }
+
+    return null;
+  }
 
   handleClick = () => {
     const { expand } = this.state;
@@ -85,6 +104,12 @@ class MuiTreeBranch extends React.Component {
     } else { // 将收起
       this.doExpand();
     }
+  };
+
+  doExpand = () => {
+    this.setState(({ expand }) => ({
+      expand: !expand
+    }));
   };
 
   loadMore = () => {
@@ -119,43 +144,18 @@ class MuiTreeBranch extends React.Component {
     );
   }
 
-  getLoadMoreText() {
-    const { data, expand } = this.props;
-    const { childrenPage } = this.state
-    const { renderLoadMoreText, childrenCountPerPage } = this.context.tree;
-    const children = this.getChildren();
-    if (renderLoadMoreText && typeof renderLoadMoreText === 'function') {
-      const LoadMoreTextElement = renderLoadMoreText(childrenPage, childrenCountPerPage, children.length);
-
-      return LoadMoreTextElement
-    }
-  }
-
-  getLoadLessText() {
-    const { data, expand } = this.props;
-    const { childrenPage } = this.state
-    const { renderLoadLessText, childrenCountPerPage } = this.context.tree;
-    const children = this.getChildren();
-    if (renderLoadLessText && typeof renderLoadLessText === 'function') {
-      const LoadLessTextElement = renderLoadLessText(childrenPage, childrenCountPerPage, children.length);
-
-      return LoadLessTextElement
-    }
-  }
-
   renderChildren = () => {
     const { childrenPage } = this.state;
     const { perPage } = this.context.tree;
     if (perPage) {
       return this.renderChildrenByPage(childrenPage);
-    } else {
-      const r = [];
-      for (let index = 0; index <= childrenPage; index++) {
-        r.push(this.renderChildrenByPage(index));
-      }
-      return r;
     }
-  }
+    const r = [];
+    for (let index = 0; index <= childrenPage; index++) {
+      r.push(this.renderChildrenByPage(index));
+    }
+    return r;
+  };
 
   render() {
     const {

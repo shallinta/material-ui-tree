@@ -8,77 +8,72 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import styles from './style';
 
-class MuiTreeLeaf extends React.Component {
-  static defaultProps = {
-    onClick: () => { },
-    showButtons: false
-  };
+const MuiTreeLeaf = ({
+  classes,
+  onClick,
+  id,
+  icon,
+  showButtons,
+  actionButtons,
+  text,
+  textClassName
+}) => (
+  <ListItem
+    dense
+    button
+    className={classes.treeNode}
+    id={`tree-leaf-${id}`}
+    onClick={onClick}
+  >
+    {
+      icon && (
+        <ListItemIcon>
+          {icon}
+        </ListItemIcon>
+      )
+    }
+    <ListItemText
+      inset
+      primary={text}
+      className={cn(classes.treeText, textClassName)}
+    />
+    {
+      showButtons && (
+        <ListItemSecondaryAction>
+          {actionButtons}
+        </ListItemSecondaryAction>
+      )
+    }
+  </ListItem>
+);
 
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-    onClick: PropTypes.func,
-    id: PropTypes.string,
-    icon: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-      PropTypes.string
-    ]),
-    showButtons: PropTypes.bool,
-    actionButtons: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-      PropTypes.string
-    ]),
-    text: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.node,
-      PropTypes.string
-    ]),
-    textClassName: PropTypes.string
-  };
+MuiTreeLeaf.defaultProps = {
+  onClick: () => { },
+  id: String(Math.random * 100),
+  showButtons: false
+};
 
-  render() {
-    const {
-      classes,
-      onClick,
-      id,
-      icon,
-      showButtons,
-      actionButtons,
-      text,
-      textClassName
-    } = this.props;
-
-    return (
-      <ListItem
-        dense
-        button
-        className={classes.treeNode}
-        id={`tree-leaf-${id}`}
-        onClick={onClick}
-      >
-        {
-          icon && (
-            <ListItemIcon>
-              {icon}
-            </ListItemIcon>
-          )
-        }
-        <ListItemText
-          inset
-          primary={text}
-          className={cn(classes.treeText, textClassName)}
-        />
-        {
-          showButtons && (
-            <ListItemSecondaryAction>
-              {actionButtons}
-            </ListItemSecondaryAction>
-          )
-        }
-      </ListItem>
-    );
-  }
-}
+MuiTreeLeaf.propTypes = {
+  classes: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
+  id: PropTypes.string,
+  icon: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.string
+  ]),
+  showButtons: PropTypes.bool,
+  actionButtons: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.string
+  ]),
+  text: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.string
+  ]),
+  textClassName: PropTypes.string
+};
 
 export default withStyles(styles, { withTheme: true })(MuiTreeLeaf);

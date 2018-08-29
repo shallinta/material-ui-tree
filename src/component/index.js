@@ -10,28 +10,6 @@ import MuiTreeBranch from './tree-branch';
 import styles from './style';
 
 class MuiTree extends React.Component {
-  static defaultProps = {
-    className: '',
-    labelName: 'label',
-    valueName: 'value',
-    childrenName: 'children',
-    data: {},
-    title: '',
-    expandFirst: false,
-    expandAll: false,
-    childrenCountPerPage: 20,
-    actionsAlignRight: false,
-    getActionsData: null,
-    renderLabel: null,
-    perPage: false,
-    renderLabelIcon: (leafData, childrenName, expand) => expand
-      ? ( <RemoveIcon /> )
-      : ( <AddIcon /> ),
-    renderLoadMoreText: (childrenPage, childrenCountPerPage, childrenLength) => (`${(childrenPage + 1) * childrenCountPerPage}/${childrenLength} shown， click to load next items...`),
-    renderLoadLessText: (childrenPage, childrenCountPerPage, childrenLength) => (`${(childrenPage) * childrenCountPerPage}/${(childrenPage + 1) * childrenCountPerPage} shown,click to load previous items...`),
-    requestChildrenData: null
-  };
-
   static propTypes = {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
@@ -68,6 +46,28 @@ class MuiTree extends React.Component {
       requestChildrenData: PropTypes.func,
       childrenCountPerPage: PropTypes.number
     })
+  };
+
+  static defaultProps = {
+    className: '',
+    labelName: 'label',
+    valueName: 'value',
+    childrenName: 'children',
+    data: {},
+    title: '',
+    expandFirst: false,
+    expandAll: false,
+    childrenCountPerPage: 20,
+    actionsAlignRight: false,
+    getActionsData: null,
+    renderLabel: null,
+    perPage: false,
+    renderLabelIcon: (leafData, childrenName, expand) => (expand
+      ? (<RemoveIcon />)
+      : (<AddIcon />)),
+    renderLoadMoreText: (childrenPage, childrenCountPerPage, childrenLength) => (`${(childrenPage + 1) * childrenCountPerPage}/${childrenLength} shown， click to load next items...`),
+    renderLoadLessText: (childrenPage, childrenCountPerPage) => (`${(childrenPage) * childrenCountPerPage}/${(childrenPage + 1) * childrenCountPerPage} shown,click to load previous items...`),
+    requestChildrenData: null
   };
 
   getChildContext() {
