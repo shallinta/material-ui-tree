@@ -9,6 +9,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MuiTreeLeaf from './tree-leaf';
+import MuiTreeLeafData from './tree-leaf-data';
 import TreeBranchChildrenPage from './tree-branch-children-page';
 import styles from './style';
 
@@ -111,13 +112,24 @@ class MuiTreeBranch extends React.Component {
     );
   }
 
-  renderChildren() {
+  getLoadMoreText() {
+    const { data, expand } = this.props;
+    const { childrenPage } = this.state
+    const { renderLoadMoreText, childrenCountPerPage } = this.context.tree;
+    const children = this.getChildren();
+    if (renderLoadMoreText && typeof renderLoadMoreText === 'function') {
+      const LoadMoreTextElement = renderLoadMoreText(childrenPage, childrenCountPerPage, children.length);
+
+      return LoadMoreTextElement
+    }
+  }
+
+  renderChildren = () => {
     const { childrenPage } = this.state;
+    const { perPage } = this.context.tree;
     const r = [];
-    let index = 0;
-    while (index <= childrenPage) {
+    for (let index = 0; index <= childrenPage; index++) {
       r.push(this.renderChildrenByPage(index));
-      index += 1;
     }
     return r;
   }
@@ -144,7 +156,7 @@ class MuiTreeBranch extends React.Component {
           className={className}
           style={{ paddingLeft: layer > 0 ? 32 : 0 }}
         >
-          <MuiTreeLeaf
+          <MuiTreeLeafData
             data={data}
             onClick={this.handleClick}
             expand={this.state.expand}
@@ -152,29 +164,20 @@ class MuiTreeBranch extends React.Component {
             chdIndex={chdIndex}
             doExpand={this.doExpand}
           />
-          { this.renderChildren() }
+          {this.renderChildren()}
           {
             this.state.expand && childrenPage + 1 < pageCount
               ? (
-                <ListItem
-                  dense
-                  button
+                <MuiTreeLeaf
                   onClick={this.loadMore}
-                  className={classes.treeNode}
-                  style={{ paddingLeft: 48 }}
-                >
-                  <ListItemIcon>
+                  id='load-more'
+                  icon={
                     <MoreVertIcon
                       className={cn(classes.treeIcon, classes.treeIconButton)}
                     />
-                  </ListItemIcon>
-                  <ListItemText
-                    inset
-                    disableTypography
-                    primary={`已加载${(childrenPage + 1) * childrenCountPerPage}/${children.length}，点击加载更多...`}
-                    className={cn(classes.treeText, classes.treeTextButton)}
-                  />
-                </ListItem>
+                  }
+                  text={this.getLoadMoreText()}
+                />
               )
               : null
           }

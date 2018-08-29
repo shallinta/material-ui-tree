@@ -4,6 +4,8 @@ import cn from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import AddIcon from '@material-ui/icons/AddCircleOutline';
+import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
 import MuiTreeBranch from './tree-branch';
 import styles from './style';
 
@@ -21,6 +23,10 @@ class MuiTree extends React.Component {
     actionsAlignRight: false,
     getActionsData: null,
     renderLabel: null,
+    renderLabelIcon: (leafData, childrenName, expand) => expand
+      ? ( <RemoveIcon /> )
+      : ( <AddIcon /> ),
+    renderLoadMoreText: (childrenPage, childrenCountPerPage, childrenLength) => (`First ${(childrenPage + 1) * childrenCountPerPage}/${childrenLength} shown， click to load more items...`),
     requestChildrenData: null
   };
 
@@ -38,6 +44,8 @@ class MuiTree extends React.Component {
     actionsAlignRight: PropTypes.bool,
     getActionsData: PropTypes.func,
     renderLabel: PropTypes.func,
+    renderLabelIcon: PropTypes.func,
+    renderLoadMoreText: PropTypes.func,
     requestChildrenData: PropTypes.func
   };
 
@@ -49,6 +57,8 @@ class MuiTree extends React.Component {
       actionsAlignRight: PropTypes.bool,
       getActionsData: PropTypes.func,
       renderLabel: PropTypes.func,
+      renderLabelIcon: PropTypes.func,
+      renderLoadMoreText: PropTypes.func,
       requestChildrenData: PropTypes.func,
       childrenCountPerPage: PropTypes.number
     })
@@ -64,6 +74,8 @@ class MuiTree extends React.Component {
       actionsAlignRight,
       getActionsData,
       renderLabel,
+      renderLabelIcon,
+      renderLoadMoreText,
       requestChildrenData,
       childrenCountPerPage
     } = this.props;
@@ -77,6 +89,8 @@ class MuiTree extends React.Component {
         actionsAlignRight,
         getActionsData,
         renderLabel,
+        renderLabelIcon,
+        renderLoadMoreText,
         requestChildrenData,
         childrenCountPerPage
       }
