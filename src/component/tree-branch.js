@@ -36,7 +36,8 @@ class MuiTreeBranch extends React.Component {
       expandFirst: PropTypes.bool,
       expandAll: PropTypes.bool,
       requestChildrenData: PropTypes.func,
-      childrenCountPerPage: PropTypes.number
+      childrenCountPerPage: PropTypes.number,
+      perPage: PropTypes.bool
     })
   };
 
@@ -92,6 +93,12 @@ class MuiTreeBranch extends React.Component {
     }));
   };
 
+  loadLess = () => {
+    this.setState(({ childrenPage }) => ({
+      childrenPage: childrenPage - 1
+    }));
+  };
+
   renderChildrenByPage(page) {
     const { layer, chdIndex } = this.props;
     const { childrenCountPerPage } = this.context.tree;
@@ -124,14 +131,30 @@ class MuiTreeBranch extends React.Component {
     }
   }
 
+  getLoadLessText() {
+    const { data, expand } = this.props;
+    const { childrenPage } = this.state
+    const { renderLoadLessText, childrenCountPerPage } = this.context.tree;
+    const children = this.getChildren();
+    if (renderLoadLessText && typeof renderLoadLessText === 'function') {
+      const LoadLessTextElement = renderLoadLessText(childrenPage, childrenCountPerPage, children.length);
+
+      return LoadLessTextElement
+    }
+  }
+
   renderChildren = () => {
     const { childrenPage } = this.state;
     const { perPage } = this.context.tree;
-    const r = [];
-    for (let index = 0; index <= childrenPage; index++) {
-      r.push(this.renderChildrenByPage(index));
+    if (perPage) {
+      return this.renderChildrenByPage(childrenPage);
+    } else {
+      const r = [];
+      for (let index = 0; index <= childrenPage; index++) {
+        r.push(this.renderChildrenByPage(index));
+      }
+      return r;
     }
-    return r;
   }
 
   render() {
@@ -144,7 +167,7 @@ class MuiTreeBranch extends React.Component {
       chdIndex
     } = this.props;
     const { childrenPage } = this.state;
-    const { childrenCountPerPage } = this.context.tree;
+    const { childrenCountPerPage, perPage } = this.context.tree;
     const children = this.getChildren();
     const pageCount = Math.ceil(children.length / childrenCountPerPage);
 
@@ -164,6 +187,22 @@ class MuiTreeBranch extends React.Component {
             chdIndex={chdIndex}
             doExpand={this.doExpand}
           />
+          {
+            this.state.expand && perPage && childrenPage > 0
+              ? (
+                <MuiTreeLeaf
+                  onClick={this.loadLess}
+                  id='load-less'
+                  icon={
+                    <MoreVertIcon
+                      className={cn(classes.treeIcon, classes.treeIconButton)}
+                    />
+                  }
+                  text={this.getLoadLessText()}
+                />
+              )
+              : null
+          }
           {this.renderChildren()}
           {
             this.state.expand && childrenPage + 1 < pageCount

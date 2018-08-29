@@ -23,10 +23,12 @@ class MuiTree extends React.Component {
     actionsAlignRight: false,
     getActionsData: null,
     renderLabel: null,
+    perPage: false,
     renderLabelIcon: (leafData, childrenName, expand) => expand
       ? ( <RemoveIcon /> )
       : ( <AddIcon /> ),
-    renderLoadMoreText: (childrenPage, childrenCountPerPage, childrenLength) => (`First ${(childrenPage + 1) * childrenCountPerPage}/${childrenLength} shown， click to load more items...`),
+    renderLoadMoreText: (childrenPage, childrenCountPerPage, childrenLength) => (`${(childrenPage + 1) * childrenCountPerPage}/${childrenLength} shown， click to load next items...`),
+    renderLoadLessText: (childrenPage, childrenCountPerPage, childrenLength) => (`${(childrenPage) * childrenCountPerPage}/${(childrenPage + 1) * childrenCountPerPage} shown,click to load previous items...`),
     requestChildrenData: null
   };
 
@@ -44,8 +46,10 @@ class MuiTree extends React.Component {
     actionsAlignRight: PropTypes.bool,
     getActionsData: PropTypes.func,
     renderLabel: PropTypes.func,
+    perPage: PropTypes.bool,
     renderLabelIcon: PropTypes.func,
     renderLoadMoreText: PropTypes.func,
+    renderLoadLessText: PropTypes.func,
     requestChildrenData: PropTypes.func
   };
 
@@ -57,8 +61,10 @@ class MuiTree extends React.Component {
       actionsAlignRight: PropTypes.bool,
       getActionsData: PropTypes.func,
       renderLabel: PropTypes.func,
+      perPage: PropTypes.bool,
       renderLabelIcon: PropTypes.func,
       renderLoadMoreText: PropTypes.func,
+      renderLoadLessText: PropTypes.func,
       requestChildrenData: PropTypes.func,
       childrenCountPerPage: PropTypes.number
     })
@@ -74,8 +80,10 @@ class MuiTree extends React.Component {
       actionsAlignRight,
       getActionsData,
       renderLabel,
+      perPage,
       renderLabelIcon,
       renderLoadMoreText,
+      renderLoadLessText,
       requestChildrenData,
       childrenCountPerPage
     } = this.props;
@@ -89,8 +97,10 @@ class MuiTree extends React.Component {
         actionsAlignRight,
         getActionsData,
         renderLabel,
+        perPage,
         renderLabelIcon,
         renderLoadMoreText,
+        renderLoadLessText,
         requestChildrenData,
         childrenCountPerPage
       }
