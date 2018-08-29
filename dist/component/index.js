@@ -29,6 +29,14 @@ var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
+var _AddCircleOutline = require('@material-ui/icons/AddCircleOutline');
+
+var _AddCircleOutline2 = _interopRequireDefault(_AddCircleOutline);
+
+var _RemoveCircleOutline = require('@material-ui/icons/RemoveCircleOutline');
+
+var _RemoveCircleOutline2 = _interopRequireDefault(_RemoveCircleOutline);
+
 var _treeBranch = require('./tree-branch');
 
 var _treeBranch2 = _interopRequireDefault(_treeBranch);
@@ -70,6 +78,10 @@ var MuiTree = function (_React$Component) {
           actionsAlignRight = _props.actionsAlignRight,
           getActionsData = _props.getActionsData,
           renderLabel = _props.renderLabel,
+          perPage = _props.perPage,
+          renderLabelIcon = _props.renderLabelIcon,
+          renderLoadMoreText = _props.renderLoadMoreText,
+          renderLoadLessText = _props.renderLoadLessText,
           requestChildrenData = _props.requestChildrenData,
           childrenCountPerPage = _props.childrenCountPerPage;
 
@@ -83,6 +95,10 @@ var MuiTree = function (_React$Component) {
           actionsAlignRight: actionsAlignRight,
           getActionsData: getActionsData,
           renderLabel: renderLabel,
+          perPage: perPage,
+          renderLabelIcon: renderLabelIcon,
+          renderLoadMoreText: renderLoadMoreText,
+          renderLoadLessText: renderLoadLessText,
           requestChildrenData: requestChildrenData,
           childrenCountPerPage: childrenCountPerPage
         }
@@ -114,21 +130,6 @@ var MuiTree = function (_React$Component) {
   return MuiTree;
 }(_react2.default.Component);
 
-MuiTree.defaultProps = {
-  className: '',
-  labelName: 'label',
-  valueName: 'value',
-  childrenName: 'children',
-  data: {},
-  title: '',
-  expandFirst: false,
-  expandAll: false,
-  childrenCountPerPage: 20,
-  actionsAlignRight: false,
-  getActionsData: null,
-  renderLabel: null,
-  requestChildrenData: null
-};
 MuiTree.propTypes = {
   classes: _propTypes2.default.object.isRequired,
   className: _propTypes2.default.string,
@@ -143,6 +144,10 @@ MuiTree.propTypes = {
   actionsAlignRight: _propTypes2.default.bool,
   getActionsData: _propTypes2.default.func,
   renderLabel: _propTypes2.default.func,
+  perPage: _propTypes2.default.bool,
+  renderLabelIcon: _propTypes2.default.func,
+  renderLoadMoreText: _propTypes2.default.func,
+  renderLoadLessText: _propTypes2.default.func,
   requestChildrenData: _propTypes2.default.func
 };
 MuiTree.childContextTypes = {
@@ -153,9 +158,38 @@ MuiTree.childContextTypes = {
     actionsAlignRight: _propTypes2.default.bool,
     getActionsData: _propTypes2.default.func,
     renderLabel: _propTypes2.default.func,
+    perPage: _propTypes2.default.bool,
+    renderLabelIcon: _propTypes2.default.func,
+    renderLoadMoreText: _propTypes2.default.func,
+    renderLoadLessText: _propTypes2.default.func,
     requestChildrenData: _propTypes2.default.func,
     childrenCountPerPage: _propTypes2.default.number
   })
+};
+MuiTree.defaultProps = {
+  className: '',
+  labelName: 'label',
+  valueName: 'value',
+  childrenName: 'children',
+  data: {},
+  title: '',
+  expandFirst: false,
+  expandAll: false,
+  childrenCountPerPage: 20,
+  actionsAlignRight: false,
+  getActionsData: null,
+  renderLabel: null,
+  perPage: false,
+  renderLabelIcon: function renderLabelIcon(leafData, childrenName, expand) {
+    return expand ? _react2.default.createElement(_RemoveCircleOutline2.default, null) : _react2.default.createElement(_AddCircleOutline2.default, null);
+  },
+  renderLoadMoreText: function renderLoadMoreText(childrenPage, childrenCountPerPage, childrenLength) {
+    return (childrenPage + 1) * childrenCountPerPage + '/' + childrenLength + ' shown\uFF0C click to load next items...';
+  },
+  renderLoadLessText: function renderLoadLessText(childrenPage, childrenCountPerPage) {
+    return childrenPage * childrenCountPerPage + '/' + (childrenPage + 1) * childrenCountPerPage + ' shown,click to load previous items...';
+  },
+  requestChildrenData: null
 };
 exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTree);
 exports.getTreeLeafDataByIndexArray = _getTreeLeafDataByIndexArray3.default;
