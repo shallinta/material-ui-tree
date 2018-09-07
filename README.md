@@ -75,6 +75,32 @@ If this is set, `labelName` option will be ignored.
 - `doExpand` : func, callback to expand current leaf's child branch  
 This function will not be called until the current leaf has no children data.  
 
+***onPrimaryClick***: *(func)* The method to handle leaf click separately from expand/collapse, with arguments:  
+- `data` : object, current leaf data  
+- `chdIndex` : number array, leaf indexs from tree root  
+- `doExpand` : func, callback to expand current leaf's child branch  
+This function by default works as expand/collapse.
+If this function available to expand/collapse current leaf simply click in icon on the left. 
+
+***renderLabelIcon***: *(func)* The method to render tree leaf label icon, with arguments:  
+- `data` : object, current leaf data  
+- `childrenName` : name of key to render child branch
+- `expand` : current Collapse state
+This function by default renders rounded plus or minus to all leafs.
+
+***renderLoadMoreText***: *(func)* The method to render load more text, with arguments:  
+- `childrenPage` : number of currently shown items  
+- `childrenCountPerPage` : number of children showing on one page  
+- `childrenLength` : total number of children
+This function by default shows text like ``'First 5/20 shown， click to load more items...'``.
+
+***perPage***: *(bool)* extends load more feature with hiding previous nth-children and add text above the all children to show previous. Default to `false`.
+
+***renderLoadLessText***: *(func)* The method to render load previous page text, with arguments:  
+- `childrenPage` : number of currently shown items  
+- `childrenCountPerPage` : number of children showing on one page  
+- `childrenLength` : total number of children
+This function by default shows text like ``'5/20 shown， click to load previous items...'``.
 
 ### Recently updated?
 Changelog available [here](https://github.com/shallinta/material-ui-tree/blob/master/CHANGELOG.md)
