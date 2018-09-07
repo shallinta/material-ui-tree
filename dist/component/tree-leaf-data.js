@@ -193,13 +193,15 @@ var MuiTreeLeafData = function (_React$Component) {
       var _props4 = this.props,
           classes = _props4.classes,
           data = _props4.data,
-          onClick = _props4.onClick;
+          onClick = _props4.onClick,
+          onPrimaryClick = _props4.onPrimaryClick;
       var _context$tree4 = this.context.tree,
           valueName = _context$tree4.valueName,
           actionsAlignRight = _context$tree4.actionsAlignRight;
 
 
       return _react2.default.createElement(_treeLeaf2.default, {
+        onPrimaryClick: onPrimaryClick,
         onClick: onClick,
         id: 'tree-leaf-' + data[valueName],
         icon: this.getLabelIcon(),
@@ -219,6 +221,7 @@ MuiTreeLeafData.propTypes = {
   data: _propTypes2.default.object.isRequired,
   chdIndex: _propTypes2.default.array.isRequired,
   onClick: _propTypes2.default.func,
+  onPrimaryClick: _propTypes2.default.func,
   expand: _propTypes2.default.bool,
   doExpand: _propTypes2.default.func.isRequired
 };
@@ -234,6 +237,7 @@ MuiTreeLeafData.contextTypes = {
 };
 MuiTreeLeafData.defaultProps = {
   onClick: function onClick() {},
+  onPrimaryClick: function onPrimaryClick() {},
   expand: false
 };
 exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTreeLeafData);

@@ -43,6 +43,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var MuiTreeLeaf = function MuiTreeLeaf(_ref) {
   var classes = _ref.classes,
       onClick = _ref.onClick,
+      onPrimaryClick = _ref.onPrimaryClick,
       id = _ref.id,
       icon = _ref.icon,
       showButtons = _ref.showButtons,
@@ -56,11 +57,11 @@ var MuiTreeLeaf = function MuiTreeLeaf(_ref) {
       button: true,
       className: classes.treeNode,
       id: 'tree-leaf-' + id,
-      onClick: onClick
+      onClick: onPrimaryClick || onClick
     },
     icon && _react2.default.createElement(
       _ListItemIcon2.default,
-      null,
+      { onClick: onClick },
       icon
     ),
     _react2.default.createElement(_ListItemText2.default, {
@@ -78,13 +79,19 @@ var MuiTreeLeaf = function MuiTreeLeaf(_ref) {
 
 MuiTreeLeaf.defaultProps = {
   onClick: function onClick() {},
+  onPrimaryClick: null,
   id: String(Math.random * 100),
-  showButtons: false
+  showButtons: false,
+  icon: null,
+  actionButtons: null,
+  text: '',
+  textClassName: ''
 };
 
 MuiTreeLeaf.propTypes = {
   classes: _propTypes2.default.object.isRequired,
   onClick: _propTypes2.default.func,
+  onPrimaryClick: _propTypes2.default.func,
   id: _propTypes2.default.string,
   icon: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.node, _propTypes2.default.string]),
   showButtons: _propTypes2.default.bool,

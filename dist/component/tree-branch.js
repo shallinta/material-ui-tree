@@ -69,7 +69,8 @@ var MuiTreeBranch = function (_React$Component) {
       childrenPage: 0
     };
 
-    _this.handleClick = function () {
+    _this.handleClick = function (event) {
+      event.stopPropagation(); // Prevent event bubbling
       var expand = _this.state.expand;
 
       if (!expand) {
@@ -95,6 +96,20 @@ var MuiTreeBranch = function (_React$Component) {
       } else {
         // 将收起
         _this.doExpand();
+      }
+    };
+
+    _this.handlePrimaryClick = function (event) {
+      var onPrimaryClick = _this.context.tree.onPrimaryClick;
+
+      if (onPrimaryClick && typeof onPrimaryClick === 'function') {
+        var _this$props2 = _this.props,
+            data = _this$props2.data,
+            chdIndex = _this$props2.chdIndex;
+
+        onPrimaryClick(data, chdIndex, _this.doExpand);
+      } else {
+        _this.handleClick(event);
       }
     };
 
@@ -157,7 +172,7 @@ var MuiTreeBranch = function (_React$Component) {
       var data = this.props.data;
       var childrenName = this.context.tree.childrenName;
 
-      return data[childrenName] || [];
+      return (typeof data[childrenName] === 'string' ? data[data[childrenName]] : data[childrenName]) || [];
     }
   }, {
     key: 'getLoadMoreText',
@@ -246,6 +261,7 @@ var MuiTreeBranch = function (_React$Component) {
           },
           _react2.default.createElement(_treeLeafData2.default, {
             data: data,
+            onPrimaryClick: this.handlePrimaryClick,
             onClick: this.handleClick,
             expand: this.state.expand,
             layer: layer,

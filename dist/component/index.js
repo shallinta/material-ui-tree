@@ -79,6 +79,7 @@ var MuiTree = function (_React$Component) {
           getActionsData = _props.getActionsData,
           renderLabel = _props.renderLabel,
           perPage = _props.perPage,
+          onPrimaryClick = _props.onPrimaryClick,
           renderLabelIcon = _props.renderLabelIcon,
           renderLoadMoreText = _props.renderLoadMoreText,
           renderLoadLessText = _props.renderLoadLessText,
@@ -96,6 +97,7 @@ var MuiTree = function (_React$Component) {
           getActionsData: getActionsData,
           renderLabel: renderLabel,
           perPage: perPage,
+          onPrimaryClick: onPrimaryClick,
           renderLabelIcon: renderLabelIcon,
           renderLoadMoreText: renderLoadMoreText,
           renderLoadLessText: renderLoadLessText,
@@ -141,6 +143,7 @@ MuiTree.propTypes = {
   expandFirst: _propTypes2.default.bool,
   expandAll: _propTypes2.default.bool,
   childrenCountPerPage: _propTypes2.default.number,
+  onPrimaryClick: _propTypes2.default.func,
   actionsAlignRight: _propTypes2.default.bool,
   getActionsData: _propTypes2.default.func,
   renderLabel: _propTypes2.default.func,
@@ -159,6 +162,7 @@ MuiTree.childContextTypes = {
     getActionsData: _propTypes2.default.func,
     renderLabel: _propTypes2.default.func,
     perPage: _propTypes2.default.bool,
+    onPrimaryClick: _propTypes2.default.func,
     renderLabelIcon: _propTypes2.default.func,
     renderLoadMoreText: _propTypes2.default.func,
     renderLoadLessText: _propTypes2.default.func,
@@ -189,7 +193,8 @@ MuiTree.defaultProps = {
   renderLoadLessText: function renderLoadLessText(childrenPage, childrenCountPerPage) {
     return childrenPage * childrenCountPerPage + '/' + (childrenPage + 1) * childrenCountPerPage + ' shown,click to load previous items...';
   },
-  requestChildrenData: null
+  requestChildrenData: null,
+  onPrimaryClick: null
 };
 exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTree);
 exports.getTreeLeafDataByIndexArray = _getTreeLeafDataByIndexArray3.default;
