@@ -56,7 +56,7 @@ class MuiTreeBranch extends React.Component {
   getChildren() {
     const { data } = this.props;
     const { childrenName } = this.context.tree;
-    return data[childrenName] || [];
+    return (typeof data[childrenName] === 'string' ? data[data[childrenName]] : data[childrenName]) || [];
   }
 
   getLoadMoreText() {
