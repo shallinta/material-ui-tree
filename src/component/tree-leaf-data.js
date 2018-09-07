@@ -139,12 +139,13 @@ class MuiTreeLeafData extends React.Component {
 
   render() {
     const {
-      classes, data, onClick
+      classes, data, onClick, onPrimaryClick
     } = this.props;
     const { valueName, actionsAlignRight } = this.context.tree;
 
     return (
       <MuiTreeLeaf
+        onPrimaryClick={onPrimaryClick}
         onClick={onClick}
         id={`tree-leaf-${data[valueName]}`}
         icon={this.getLabelIcon()}

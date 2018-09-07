@@ -11,6 +11,7 @@ import styles from './style';
 const MuiTreeLeaf = ({
   classes,
   onClick,
+  onPrimaryClick,
   id,
   icon,
   showButtons,
@@ -23,11 +24,11 @@ const MuiTreeLeaf = ({
     button
     className={classes.treeNode}
     id={`tree-leaf-${id}`}
-    onClick={onClick}
+    onClick={onPrimaryClick || onClick}
   >
     {
       icon && (
-        <ListItemIcon>
+        <ListItemIcon onClick={onClick}>
           {icon}
         </ListItemIcon>
       )
@@ -49,6 +50,7 @@ const MuiTreeLeaf = ({
 
 MuiTreeLeaf.defaultProps = {
   onClick: () => { },
+  onPrimaryClick: null,
   id: String(Math.random * 100),
   showButtons: false
 };

@@ -87,7 +87,8 @@ class MuiTreeBranch extends React.Component {
     return null;
   }
 
-  handleClick = () => {
+  handleClick = event => {
+    event.stopPropagation(); // Prevent event bubbling
     const { expand } = this.state;
     if (!expand) { // 即将展开
       if (this.getChildren().length === 0) { // 没有子节点
@@ -105,6 +106,16 @@ class MuiTreeBranch extends React.Component {
       this.doExpand();
     }
   };
+
+  handlePrimaryClick = event => {
+    const { onPrimaryClick } = this.context.tree;
+    if (onPrimaryClick && typeof onPrimaryClick === 'function') {
+      const { data, chdIndex } = this.props;
+      onPrimaryClick(data, chdIndex, this.doExpand);
+    } else {
+      this.handleClick(event);
+    }
+  }
 
   doExpand = () => {
     this.setState(({ expand }) => ({
@@ -181,6 +192,7 @@ class MuiTreeBranch extends React.Component {
         >
           <MuiTreeLeafData
             data={data}
+            onPrimaryClick={this.handlePrimaryClick}
             onClick={this.handleClick}
             expand={this.state.expand}
             layer={layer}

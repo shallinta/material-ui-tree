@@ -21,6 +21,7 @@ class MuiTree extends React.Component {
     expandFirst: PropTypes.bool,
     expandAll: PropTypes.bool,
     childrenCountPerPage: PropTypes.number,
+    onPrimaryClick: PropTypes.func,
     actionsAlignRight: PropTypes.bool,
     getActionsData: PropTypes.func,
     renderLabel: PropTypes.func,
@@ -40,6 +41,7 @@ class MuiTree extends React.Component {
       getActionsData: PropTypes.func,
       renderLabel: PropTypes.func,
       perPage: PropTypes.bool,
+      onPrimaryClick: PropTypes.func,
       renderLabelIcon: PropTypes.func,
       renderLoadMoreText: PropTypes.func,
       renderLoadLessText: PropTypes.func,
@@ -67,7 +69,8 @@ class MuiTree extends React.Component {
       : (<AddIcon />)),
     renderLoadMoreText: (childrenPage, childrenCountPerPage, childrenLength) => (`${(childrenPage + 1) * childrenCountPerPage}/${childrenLength} shown， click to load next items...`),
     renderLoadLessText: (childrenPage, childrenCountPerPage) => (`${(childrenPage) * childrenCountPerPage}/${(childrenPage + 1) * childrenCountPerPage} shown,click to load previous items...`),
-    requestChildrenData: null
+    requestChildrenData: null,
+    onPrimaryClick: null
   };
 
   getChildContext() {
@@ -81,6 +84,7 @@ class MuiTree extends React.Component {
       getActionsData,
       renderLabel,
       perPage,
+      onPrimaryClick,
       renderLabelIcon,
       renderLoadMoreText,
       renderLoadLessText,
@@ -98,6 +102,7 @@ class MuiTree extends React.Component {
         getActionsData,
         renderLabel,
         perPage,
+        onPrimaryClick,
         renderLabelIcon,
         renderLoadMoreText,
         renderLoadLessText,
