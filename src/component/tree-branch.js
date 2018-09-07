@@ -87,7 +87,7 @@ class MuiTreeBranch extends React.Component {
     return null;
   }
 
-  handleClick = event => {
+  handleClick = (event) => {
     event.stopPropagation(); // Prevent event bubbling
     const { expand } = this.state;
     if (!expand) { // 即将展开
@@ -107,7 +107,7 @@ class MuiTreeBranch extends React.Component {
     }
   };
 
-  handlePrimaryClick = event => {
+  handlePrimaryClick = (event) => {
     const { onPrimaryClick } = this.context.tree;
     if (onPrimaryClick && typeof onPrimaryClick === 'function') {
       const { data, chdIndex } = this.props;

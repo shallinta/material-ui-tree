@@ -52,12 +52,17 @@ MuiTreeLeaf.defaultProps = {
   onClick: () => { },
   onPrimaryClick: null,
   id: String(Math.random * 100),
-  showButtons: false
+  showButtons: false,
+  icon: null,
+  actionButtons: null,
+  text: '',
+  textClassName: ''
 };
 
 MuiTreeLeaf.propTypes = {
   classes: PropTypes.object.isRequired,
   onClick: PropTypes.func,
+  onPrimaryClick: PropTypes.func,
   id: PropTypes.string,
   icon: PropTypes.oneOfType([
     PropTypes.func,

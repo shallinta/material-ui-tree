@@ -14,6 +14,7 @@ class MuiTreeLeafData extends React.Component {
     data: PropTypes.object.isRequired,
     chdIndex: PropTypes.array.isRequired,
     onClick: PropTypes.func,
+    onPrimaryClick: PropTypes.func,
     expand: PropTypes.bool,
     doExpand: PropTypes.func.isRequired
   };
@@ -31,6 +32,7 @@ class MuiTreeLeafData extends React.Component {
 
   static defaultProps = {
     onClick: () => { },
+    onPrimaryClick: () => { },
     expand: false
   };
 
