@@ -4,22 +4,13 @@ import cn from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MuiTreeLeaf from './tree-leaf';
+import MuiTreeLeafData from './tree-leaf-data';
 import TreeBranchChildrenPage from './tree-branch-children-page';
 import styles from './style';
 
 class MuiTreeBranch extends React.Component {
-  static defaultProps = {
-    className: '',
-    data: {},
-    expand: false,
-    chdIndex: []
-  };
-
   static propTypes = {
     classes: PropTypes.object.isRequired,
     layer: PropTypes.number.isRequired,
@@ -35,8 +26,16 @@ class MuiTreeBranch extends React.Component {
       expandFirst: PropTypes.bool,
       expandAll: PropTypes.bool,
       requestChildrenData: PropTypes.func,
-      childrenCountPerPage: PropTypes.number
+      childrenCountPerPage: PropTypes.number,
+      perPage: PropTypes.bool
     })
+  };
+
+  static defaultProps = {
+    className: '',
+    data: {},
+    expand: false,
+    chdIndex: []
   };
 
   constructor(props, context) {
@@ -57,16 +56,39 @@ class MuiTreeBranch extends React.Component {
   getChildren() {
     const { data } = this.props;
     const { childrenName } = this.context.tree;
-    return data[childrenName] || [];
+    return (typeof data[childrenName] === 'string' ? data[data[childrenName]] : data[childrenName]) || [];
   }
 
-  doExpand = () => {
-    this.setState(({ expand }) => ({
-      expand: !expand
-    }));
-  };
+  getLoadMoreText() {
+    const { childrenPage } = this.state;
+    const { renderLoadMoreText, childrenCountPerPage } = this.context.tree;
+    const children = this.getChildren();
+    if (renderLoadMoreText && typeof renderLoadMoreText === 'function') {
+      const LoadMoreTextElement =
+        renderLoadMoreText(childrenPage, childrenCountPerPage, children.length);
 
-  handleClick = () => {
+      return LoadMoreTextElement;
+    }
+
+    return null;
+  }
+
+  getLoadLessText() {
+    const { childrenPage } = this.state;
+    const { renderLoadLessText, childrenCountPerPage } = this.context.tree;
+    const children = this.getChildren();
+    if (renderLoadLessText && typeof renderLoadLessText === 'function') {
+      const LoadLessTextElement =
+        renderLoadLessText(childrenPage, childrenCountPerPage, children.length);
+
+      return LoadLessTextElement;
+    }
+
+    return null;
+  }
+
+  handleClick = (event) => {
+    event.stopPropagation(); // Prevent event bubbling
     const { expand } = this.state;
     if (!expand) { // 即将展开
       if (this.getChildren().length === 0) { // 没有子节点
@@ -85,9 +107,31 @@ class MuiTreeBranch extends React.Component {
     }
   };
 
+  handlePrimaryClick = (event) => {
+    const { onPrimaryClick } = this.context.tree;
+    if (onPrimaryClick && typeof onPrimaryClick === 'function') {
+      const { data, chdIndex } = this.props;
+      onPrimaryClick(data, chdIndex, this.doExpand);
+    } else {
+      this.handleClick(event);
+    }
+  }
+
+  doExpand = () => {
+    this.setState(({ expand }) => ({
+      expand: !expand
+    }));
+  };
+
   loadMore = () => {
     this.setState(({ childrenPage }) => ({
       childrenPage: childrenPage + 1
+    }));
+  };
+
+  loadLess = () => {
+    this.setState(({ childrenPage }) => ({
+      childrenPage: childrenPage - 1
     }));
   };
 
@@ -111,16 +155,18 @@ class MuiTreeBranch extends React.Component {
     );
   }
 
-  renderChildren() {
+  renderChildren = () => {
     const { childrenPage } = this.state;
+    const { perPage } = this.context.tree;
+    if (perPage) {
+      return this.renderChildrenByPage(childrenPage);
+    }
     const r = [];
-    let index = 0;
-    while (index <= childrenPage) {
+    for (let index = 0; index <= childrenPage; index++) {
       r.push(this.renderChildrenByPage(index));
-      index += 1;
     }
     return r;
-  }
+  };
 
   render() {
     const {
@@ -132,7 +178,7 @@ class MuiTreeBranch extends React.Component {
       chdIndex
     } = this.props;
     const { childrenPage } = this.state;
-    const { childrenCountPerPage } = this.context.tree;
+    const { childrenCountPerPage, perPage } = this.context.tree;
     const children = this.getChildren();
     const pageCount = Math.ceil(children.length / childrenCountPerPage);
 
@@ -144,37 +190,45 @@ class MuiTreeBranch extends React.Component {
           className={className}
           style={{ paddingLeft: layer > 0 ? 32 : 0 }}
         >
-          <MuiTreeLeaf
+          <MuiTreeLeafData
             data={data}
+            onPrimaryClick={this.handlePrimaryClick}
             onClick={this.handleClick}
             expand={this.state.expand}
             layer={layer}
             chdIndex={chdIndex}
             doExpand={this.doExpand}
           />
-          { this.renderChildren() }
           {
-            this.state.expand && childrenPage + 1 < pageCount
+            this.state.expand && perPage && childrenPage > 0
               ? (
-                <ListItem
-                  dense
-                  button
-                  onClick={this.loadMore}
-                  className={classes.treeNode}
-                  style={{ paddingLeft: 48 }}
-                >
-                  <ListItemIcon>
+                <MuiTreeLeaf
+                  onClick={this.loadLess}
+                  id='load-less'
+                  icon={
                     <MoreVertIcon
                       className={cn(classes.treeIcon, classes.treeIconButton)}
                     />
-                  </ListItemIcon>
-                  <ListItemText
-                    inset
-                    disableTypography
-                    primary={`已加载${(childrenPage + 1) * childrenCountPerPage}/${children.length}，点击加载更多...`}
-                    className={cn(classes.treeText, classes.treeTextButton)}
-                  />
-                </ListItem>
+                  }
+                  text={this.getLoadLessText()}
+                />
+              )
+              : null
+          }
+          {this.renderChildren()}
+          {
+            this.state.expand && childrenPage + 1 < pageCount
+              ? (
+                <MuiTreeLeaf
+                  onClick={this.loadMore}
+                  id='load-more'
+                  icon={
+                    <MoreVertIcon
+                      className={cn(classes.treeIcon, classes.treeIconButton)}
+                    />
+                  }
+                  text={this.getLoadMoreText()}
+                />
               )
               : null
           }

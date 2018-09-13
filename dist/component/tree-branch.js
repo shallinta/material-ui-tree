@@ -28,18 +28,6 @@ var _List = require('@material-ui/core/List');
 
 var _List2 = _interopRequireDefault(_List);
 
-var _ListItem = require('@material-ui/core/ListItem');
-
-var _ListItem2 = _interopRequireDefault(_ListItem);
-
-var _ListItemIcon = require('@material-ui/core/ListItemIcon');
-
-var _ListItemIcon2 = _interopRequireDefault(_ListItemIcon);
-
-var _ListItemText = require('@material-ui/core/ListItemText');
-
-var _ListItemText2 = _interopRequireDefault(_ListItemText);
-
 var _MoreVert = require('@material-ui/icons/MoreVert');
 
 var _MoreVert2 = _interopRequireDefault(_MoreVert);
@@ -47,6 +35,10 @@ var _MoreVert2 = _interopRequireDefault(_MoreVert);
 var _treeLeaf = require('./tree-leaf');
 
 var _treeLeaf2 = _interopRequireDefault(_treeLeaf);
+
+var _treeLeafData = require('./tree-leaf-data');
+
+var _treeLeafData2 = _interopRequireDefault(_treeLeafData);
 
 var _treeBranchChildrenPage = require('./tree-branch-children-page');
 
@@ -77,16 +69,8 @@ var MuiTreeBranch = function (_React$Component) {
       childrenPage: 0
     };
 
-    _this.doExpand = function () {
-      _this.setState(function (_ref) {
-        var expand = _ref.expand;
-        return {
-          expand: !expand
-        };
-      });
-    };
-
-    _this.handleClick = function () {
+    _this.handleClick = function (event) {
+      event.stopPropagation(); // Prevent event bubbling
       var expand = _this.state.expand;
 
       if (!expand) {
@@ -115,6 +99,29 @@ var MuiTreeBranch = function (_React$Component) {
       }
     };
 
+    _this.handlePrimaryClick = function (event) {
+      var onPrimaryClick = _this.context.tree.onPrimaryClick;
+
+      if (onPrimaryClick && typeof onPrimaryClick === 'function') {
+        var _this$props2 = _this.props,
+            data = _this$props2.data,
+            chdIndex = _this$props2.chdIndex;
+
+        onPrimaryClick(data, chdIndex, _this.doExpand);
+      } else {
+        _this.handleClick(event);
+      }
+    };
+
+    _this.doExpand = function () {
+      _this.setState(function (_ref) {
+        var expand = _ref.expand;
+        return {
+          expand: !expand
+        };
+      });
+    };
+
     _this.loadMore = function () {
       _this.setState(function (_ref2) {
         var childrenPage = _ref2.childrenPage;
@@ -122,6 +129,29 @@ var MuiTreeBranch = function (_React$Component) {
           childrenPage: childrenPage + 1
         };
       });
+    };
+
+    _this.loadLess = function () {
+      _this.setState(function (_ref3) {
+        var childrenPage = _ref3.childrenPage;
+        return {
+          childrenPage: childrenPage - 1
+        };
+      });
+    };
+
+    _this.renderChildren = function () {
+      var childrenPage = _this.state.childrenPage;
+      var perPage = _this.context.tree.perPage;
+
+      if (perPage) {
+        return _this.renderChildrenByPage(childrenPage);
+      }
+      var r = [];
+      for (var index = 0; index <= childrenPage; index++) {
+        r.push(_this.renderChildrenByPage(index));
+      }
+      return r;
     };
 
     var layer = props.layer;
@@ -142,7 +172,41 @@ var MuiTreeBranch = function (_React$Component) {
       var data = this.props.data;
       var childrenName = this.context.tree.childrenName;
 
-      return data[childrenName] || [];
+      return (typeof data[childrenName] === 'string' ? data[data[childrenName]] : data[childrenName]) || [];
+    }
+  }, {
+    key: 'getLoadMoreText',
+    value: function getLoadMoreText() {
+      var childrenPage = this.state.childrenPage;
+      var _context$tree2 = this.context.tree,
+          renderLoadMoreText = _context$tree2.renderLoadMoreText,
+          childrenCountPerPage = _context$tree2.childrenCountPerPage;
+
+      var children = this.getChildren();
+      if (renderLoadMoreText && typeof renderLoadMoreText === 'function') {
+        var LoadMoreTextElement = renderLoadMoreText(childrenPage, childrenCountPerPage, children.length);
+
+        return LoadMoreTextElement;
+      }
+
+      return null;
+    }
+  }, {
+    key: 'getLoadLessText',
+    value: function getLoadLessText() {
+      var childrenPage = this.state.childrenPage;
+      var _context$tree3 = this.context.tree,
+          renderLoadLessText = _context$tree3.renderLoadLessText,
+          childrenCountPerPage = _context$tree3.childrenCountPerPage;
+
+      var children = this.getChildren();
+      if (renderLoadLessText && typeof renderLoadLessText === 'function') {
+        var LoadLessTextElement = renderLoadLessText(childrenPage, childrenCountPerPage, children.length);
+
+        return LoadLessTextElement;
+      }
+
+      return null;
     }
   }, {
     key: 'renderChildrenByPage',
@@ -167,19 +231,6 @@ var MuiTreeBranch = function (_React$Component) {
       });
     }
   }, {
-    key: 'renderChildren',
-    value: function renderChildren() {
-      var childrenPage = this.state.childrenPage;
-
-      var r = [];
-      var index = 0;
-      while (index <= childrenPage) {
-        r.push(this.renderChildrenByPage(index));
-        index += 1;
-      }
-      return r;
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _props2 = this.props,
@@ -190,7 +241,9 @@ var MuiTreeBranch = function (_React$Component) {
           layer = _props2.layer,
           chdIndex = _props2.chdIndex;
       var childrenPage = this.state.childrenPage;
-      var childrenCountPerPage = this.context.tree.childrenCountPerPage;
+      var _context$tree4 = this.context.tree,
+          childrenCountPerPage = _context$tree4.childrenCountPerPage,
+          perPage = _context$tree4.perPage;
 
       var children = this.getChildren();
       var pageCount = Math.ceil(children.length / childrenCountPerPage);
@@ -206,38 +259,32 @@ var MuiTreeBranch = function (_React$Component) {
             className: className,
             style: { paddingLeft: layer > 0 ? 32 : 0 }
           },
-          _react2.default.createElement(_treeLeaf2.default, {
+          _react2.default.createElement(_treeLeafData2.default, {
             data: data,
+            onPrimaryClick: this.handlePrimaryClick,
             onClick: this.handleClick,
             expand: this.state.expand,
             layer: layer,
             chdIndex: chdIndex,
             doExpand: this.doExpand
           }),
+          this.state.expand && perPage && childrenPage > 0 ? _react2.default.createElement(_treeLeaf2.default, {
+            onClick: this.loadLess,
+            id: 'load-less',
+            icon: _react2.default.createElement(_MoreVert2.default, {
+              className: (0, _classnames2.default)(classes.treeIcon, classes.treeIconButton)
+            }),
+            text: this.getLoadLessText()
+          }) : null,
           this.renderChildren(),
-          this.state.expand && childrenPage + 1 < pageCount ? _react2.default.createElement(
-            _ListItem2.default,
-            {
-              dense: true,
-              button: true,
-              onClick: this.loadMore,
-              className: classes.treeNode,
-              style: { paddingLeft: 48 }
-            },
-            _react2.default.createElement(
-              _ListItemIcon2.default,
-              null,
-              _react2.default.createElement(_MoreVert2.default, {
-                className: (0, _classnames2.default)(classes.treeIcon, classes.treeIconButton)
-              })
-            ),
-            _react2.default.createElement(_ListItemText2.default, {
-              inset: true,
-              disableTypography: true,
-              primary: '\u5DF2\u52A0\u8F7D' + (childrenPage + 1) * childrenCountPerPage + '/' + children.length + '\uFF0C\u70B9\u51FB\u52A0\u8F7D\u66F4\u591A...',
-              className: (0, _classnames2.default)(classes.treeText, classes.treeTextButton)
-            })
-          ) : null
+          this.state.expand && childrenPage + 1 < pageCount ? _react2.default.createElement(_treeLeaf2.default, {
+            onClick: this.loadMore,
+            id: 'load-more',
+            icon: _react2.default.createElement(_MoreVert2.default, {
+              className: (0, _classnames2.default)(classes.treeIcon, classes.treeIconButton)
+            }),
+            text: this.getLoadMoreText()
+          }) : null
         )
       );
     }
@@ -246,12 +293,6 @@ var MuiTreeBranch = function (_React$Component) {
   return MuiTreeBranch;
 }(_react2.default.Component);
 
-MuiTreeBranch.defaultProps = {
-  className: '',
-  data: {},
-  expand: false,
-  chdIndex: []
-};
 MuiTreeBranch.propTypes = {
   classes: _propTypes2.default.object.isRequired,
   layer: _propTypes2.default.number.isRequired,
@@ -266,7 +307,14 @@ MuiTreeBranch.contextTypes = {
     expandFirst: _propTypes2.default.bool,
     expandAll: _propTypes2.default.bool,
     requestChildrenData: _propTypes2.default.func,
-    childrenCountPerPage: _propTypes2.default.number
+    childrenCountPerPage: _propTypes2.default.number,
+    perPage: _propTypes2.default.bool
   })
+};
+MuiTreeBranch.defaultProps = {
+  className: '',
+  data: {},
+  expand: false,
+  chdIndex: []
 };
 exports.default = (0, _styles.withStyles)(_style2.default, { withTheme: true })(MuiTreeBranch);
