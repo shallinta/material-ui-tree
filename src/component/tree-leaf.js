@@ -8,8 +8,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/AddCircleOutline';
-import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
 import styles from './style';
 
 class MuiTreeLeaf extends React.Component {
@@ -32,6 +30,8 @@ class MuiTreeLeaf extends React.Component {
       labelName: PropTypes.string,
       valueName: PropTypes.string,
       actionsAlignRight: PropTypes.bool,
+      foldIcon: PropTypes.element,
+      unfoldIcon: PropTypes.element,
       getActionsData: PropTypes.func,
       renderLabel: PropTypes.func
     })
@@ -119,6 +119,11 @@ class MuiTreeLeaf extends React.Component {
     return data[labelName];
   }
 
+  getIcon(icon) {
+    const { classes } = this.props;
+    return React.cloneElement(icon, { className: classes.treeIcon });
+  }
+
   handleButtonClick = (e, onClick) => {
     e.preventDefault();
     e.stopPropagation();
@@ -129,7 +134,9 @@ class MuiTreeLeaf extends React.Component {
     const {
       classes, data, onClick, expand
     } = this.props;
-    const { valueName, actionsAlignRight } = this.context.tree;
+    const {
+      valueName, actionsAlignRight, foldIcon, unfoldIcon
+    } = this.context.tree;
 
     return (
       <ListItem
@@ -140,15 +147,7 @@ class MuiTreeLeaf extends React.Component {
         onClick={onClick}
       >
         <ListItemIcon>
-          {
-            expand
-              ? (
-                <RemoveIcon className={classes.treeIcon} />
-              )
-              : (
-                <AddIcon className={classes.treeIcon} />
-              )
-          }
+          { expand ? this.getIcon(unfoldIcon) : this.getIcon(foldIcon) }
         </ListItemIcon>
         <ListItemText
           inset

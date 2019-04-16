@@ -11,6 +11,8 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import ArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Tree, { getTreeLeafDataByIndexArray } from 'material-ui-tree';
 
 class TreeDemo extends React.Component {
@@ -106,6 +108,7 @@ class TreeDemo extends React.Component {
         </Typography>
       );
     }
+    return null;
   };
 
   getTreeLeafActionsData = (leafData, chdIndex, expand) => {
@@ -177,6 +180,8 @@ class TreeDemo extends React.Component {
           labelName="path"
           valueName="sha"
           childrenName="tree"
+          foldIcon={<ArrowDownIcon />}
+          unfoldIcon={<ArrowUpIcon />}
           renderLabel={this.renderTreeLeafLabel}
           getActionsData={this.getTreeLeafActionsData}
           requestChildrenData={this.requestTreeLeafChildrenData}

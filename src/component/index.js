@@ -4,6 +4,8 @@ import cn from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import FoldIcon from '@material-ui/icons/AddCircleOutline';
+import UnfoldIcon from '@material-ui/icons/RemoveCircleOutline';
 import MuiTreeBranch from './tree-branch';
 import styles from './style';
 
@@ -19,6 +21,8 @@ class MuiTree extends React.Component {
     expandAll: false,
     childrenCountPerPage: 20,
     actionsAlignRight: false,
+    foldIcon: <FoldIcon />,
+    unfoldIcon: <UnfoldIcon />,
     getActionsData: null,
     renderLabel: null,
     requestChildrenData: null
@@ -36,6 +40,8 @@ class MuiTree extends React.Component {
     expandAll: PropTypes.bool,
     childrenCountPerPage: PropTypes.number,
     actionsAlignRight: PropTypes.bool,
+    foldIcon: PropTypes.element,
+    unfoldIcon: PropTypes.element,
     getActionsData: PropTypes.func,
     renderLabel: PropTypes.func,
     requestChildrenData: PropTypes.func
@@ -47,6 +53,8 @@ class MuiTree extends React.Component {
       valueName: PropTypes.string,
       childrenName: PropTypes.string,
       actionsAlignRight: PropTypes.bool,
+      foldIcon: PropTypes.element,
+      unfoldIcon: PropTypes.element,
       getActionsData: PropTypes.func,
       renderLabel: PropTypes.func,
       requestChildrenData: PropTypes.func,
@@ -62,6 +70,8 @@ class MuiTree extends React.Component {
       expandFirst,
       expandAll,
       actionsAlignRight,
+      foldIcon,
+      unfoldIcon,
       getActionsData,
       renderLabel,
       requestChildrenData,
@@ -75,6 +85,8 @@ class MuiTree extends React.Component {
         expandFirst,
         expandAll,
         actionsAlignRight,
+        foldIcon,
+        unfoldIcon,
         getActionsData,
         renderLabel,
         requestChildrenData,

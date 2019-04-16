@@ -23,8 +23,8 @@
     "@material-ui/icons": "^2.0.3",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "engines": {
     "node": ">=4.0",
@@ -40,9 +40,9 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-config-qunar": "^3.0.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.17.1",
     "rimraf": "^2.6.3",
     "standard-version": "^4.4.0",
     "superagent": "^3.8.3"
