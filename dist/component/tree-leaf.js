@@ -46,14 +46,6 @@ var _IconButton = require('@material-ui/core/IconButton');
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _AddCircleOutline = require('@material-ui/icons/AddCircleOutline');
-
-var _AddCircleOutline2 = _interopRequireDefault(_AddCircleOutline);
-
-var _RemoveCircleOutline = require('@material-ui/icons/RemoveCircleOutline');
-
-var _RemoveCircleOutline2 = _interopRequireDefault(_RemoveCircleOutline);
-
 var _style = require('./style');
 
 var _style2 = _interopRequireDefault(_style);
@@ -183,6 +175,13 @@ var MuiTreeLeaf = function (_React$Component) {
       return data[labelName];
     }
   }, {
+    key: 'getIcon',
+    value: function getIcon(icon) {
+      var classes = this.props.classes;
+
+      return _react2.default.cloneElement(icon, { className: classes.treeIcon });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props3 = this.props,
@@ -192,7 +191,9 @@ var MuiTreeLeaf = function (_React$Component) {
           expand = _props3.expand;
       var _context$tree3 = this.context.tree,
           valueName = _context$tree3.valueName,
-          actionsAlignRight = _context$tree3.actionsAlignRight;
+          actionsAlignRight = _context$tree3.actionsAlignRight,
+          foldIcon = _context$tree3.foldIcon,
+          unfoldIcon = _context$tree3.unfoldIcon;
 
 
       return _react2.default.createElement(
@@ -207,7 +208,7 @@ var MuiTreeLeaf = function (_React$Component) {
         _react2.default.createElement(
           _ListItemIcon2.default,
           null,
-          expand ? _react2.default.createElement(_RemoveCircleOutline2.default, { className: classes.treeIcon }) : _react2.default.createElement(_AddCircleOutline2.default, { className: classes.treeIcon })
+          expand ? this.getIcon(unfoldIcon) : this.getIcon(foldIcon)
         ),
         _react2.default.createElement(_ListItemText2.default, {
           inset: true,
@@ -239,6 +240,8 @@ MuiTreeLeaf.contextTypes = {
     labelName: _propTypes2.default.string,
     valueName: _propTypes2.default.string,
     actionsAlignRight: _propTypes2.default.bool,
+    foldIcon: _propTypes2.default.element,
+    unfoldIcon: _propTypes2.default.element,
     getActionsData: _propTypes2.default.func,
     renderLabel: _propTypes2.default.func
   })

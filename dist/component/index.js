@@ -29,6 +29,14 @@ var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
+var _AddCircleOutline = require('@material-ui/icons/AddCircleOutline');
+
+var _AddCircleOutline2 = _interopRequireDefault(_AddCircleOutline);
+
+var _RemoveCircleOutline = require('@material-ui/icons/RemoveCircleOutline');
+
+var _RemoveCircleOutline2 = _interopRequireDefault(_RemoveCircleOutline);
+
 var _treeBranch = require('./tree-branch');
 
 var _treeBranch2 = _interopRequireDefault(_treeBranch);
@@ -68,6 +76,8 @@ var MuiTree = function (_React$Component) {
           expandFirst = _props.expandFirst,
           expandAll = _props.expandAll,
           actionsAlignRight = _props.actionsAlignRight,
+          foldIcon = _props.foldIcon,
+          unfoldIcon = _props.unfoldIcon,
           getActionsData = _props.getActionsData,
           renderLabel = _props.renderLabel,
           requestChildrenData = _props.requestChildrenData,
@@ -81,6 +91,8 @@ var MuiTree = function (_React$Component) {
           expandFirst: expandFirst,
           expandAll: expandAll,
           actionsAlignRight: actionsAlignRight,
+          foldIcon: foldIcon,
+          unfoldIcon: unfoldIcon,
           getActionsData: getActionsData,
           renderLabel: renderLabel,
           requestChildrenData: requestChildrenData,
@@ -125,6 +137,8 @@ MuiTree.defaultProps = {
   expandAll: false,
   childrenCountPerPage: 20,
   actionsAlignRight: false,
+  foldIcon: _react2.default.createElement(_AddCircleOutline2.default, null),
+  unfoldIcon: _react2.default.createElement(_RemoveCircleOutline2.default, null),
   getActionsData: null,
   renderLabel: null,
   requestChildrenData: null
@@ -141,6 +155,8 @@ MuiTree.propTypes = {
   expandAll: _propTypes2.default.bool,
   childrenCountPerPage: _propTypes2.default.number,
   actionsAlignRight: _propTypes2.default.bool,
+  foldIcon: _propTypes2.default.element,
+  unfoldIcon: _propTypes2.default.element,
   getActionsData: _propTypes2.default.func,
   renderLabel: _propTypes2.default.func,
   requestChildrenData: _propTypes2.default.func
@@ -151,6 +167,8 @@ MuiTree.childContextTypes = {
     valueName: _propTypes2.default.string,
     childrenName: _propTypes2.default.string,
     actionsAlignRight: _propTypes2.default.bool,
+    foldIcon: _propTypes2.default.element,
+    unfoldIcon: _propTypes2.default.element,
     getActionsData: _propTypes2.default.func,
     renderLabel: _propTypes2.default.func,
     requestChildrenData: _propTypes2.default.func,
