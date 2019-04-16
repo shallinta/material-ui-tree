@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/shallinta/material-ui-tree/compare/v1.0.12...v1.1.0) (2019-04-16)
+
+
+### Features
+
+* Now we can customize the icon of tree nodes. ([#11](https://github.com/shallinta/material-ui-tree/issues/11)) ([2578151](https://github.com/shallinta/material-ui-tree/commit/2578151))
+
+
+
 <a name="1.0.12"></a>
 ## [1.0.12](https://github.com/shallinta/material-ui-tree/compare/v1.0.11...v1.0.12) (2019-03-25)
 
