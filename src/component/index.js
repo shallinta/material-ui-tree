@@ -13,13 +13,19 @@ class MuiTree extends React.Component {
   static defaultProps = {
     className: '',
     labelName: 'label',
+    labelKey: '',
     valueName: 'value',
+    valueKey: '',
     childrenName: 'children',
+    childrenKey: '',
     data: {},
     title: '',
     expandFirst: false,
+    unfoldFirst: false,
     expandAll: false,
+    unfoldAll: false,
     childrenCountPerPage: 20,
+    pageSize: 0,
     actionsAlignRight: false,
     foldIcon: <FoldIcon />,
     unfoldIcon: <UnfoldIcon />,
@@ -32,13 +38,19 @@ class MuiTree extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     labelName: PropTypes.string,
+    labelKey: PropTypes.string,
     valueName: PropTypes.string,
+    valueKey: PropTypes.string,
     childrenName: PropTypes.string,
+    childrenKey: PropTypes.string,
     data: PropTypes.object,
     title: PropTypes.string,
     expandFirst: PropTypes.bool,
+    unfoldFirst: PropTypes.bool,
     expandAll: PropTypes.bool,
+    unfoldAll: PropTypes.bool,
     childrenCountPerPage: PropTypes.number,
+    pageSize: PropTypes.number,
     actionsAlignRight: PropTypes.bool,
     foldIcon: PropTypes.element,
     unfoldIcon: PropTypes.element,
@@ -65,34 +77,73 @@ class MuiTree extends React.Component {
   getChildContext() {
     const {
       labelName,
+      labelKey,
       valueName,
+      valueKey,
       childrenName,
+      childrenKey,
       expandFirst,
+      unfoldFirst,
       expandAll,
+      unfoldAll,
       actionsAlignRight,
       foldIcon,
       unfoldIcon,
       getActionsData,
       renderLabel,
       requestChildrenData,
-      childrenCountPerPage
+      childrenCountPerPage,
+      pageSize
     } = this.props;
     return {
       tree: {
-        labelName,
-        valueName,
-        childrenName,
-        expandFirst,
-        expandAll,
+        labelName: labelKey || labelName,
+        valueName: valueKey || valueName,
+        childrenName: childrenKey || childrenName,
+        expandFirst: unfoldFirst || expandFirst,
+        expandAll: unfoldAll || expandAll,
         actionsAlignRight,
         foldIcon,
         unfoldIcon,
         getActionsData,
         renderLabel,
         requestChildrenData,
-        childrenCountPerPage
+        childrenCountPerPage: pageSize || childrenCountPerPage
       }
     };
+  }
+
+  componentWillMount() {
+    const {
+      labelName,
+      valueName,
+      childrenName,
+      expandFirst,
+      expandAll,
+      childrenCountPerPage
+    } = this.props;
+    if (labelName !== 'label') {
+      this.log('labelName', 'labelKey');
+    }
+    if (valueName !== 'value') {
+      this.log('valueName', 'valueKey');
+    }
+    if (childrenName !== 'children') {
+      this.log('childrenName', 'childrenKey');
+    }
+    if (expandFirst) {
+      this.log('expandFirst', 'unfoldFirst');
+    }
+    if (expandAll) {
+      this.log('expandAll', 'unfoldAll');
+    }
+    if (childrenCountPerPage !== 20) {
+      this.log('childrenCountPerPage', 'pageSize');
+    }
+  }
+
+  log(key, nextKey) {
+    console.warn(`The property \`${key}\` is deprecated, and it will be completely removed at next major version. please use \`${nextKey}\` instead.`);
   }
 
   render() {

@@ -11,6 +11,9 @@
 > A react tree component with material-ui.  
 > See demo page: [Material-ui-tree Demo](https://wkp03p2jrl.codesandbox.io/)
 
+### See about the next version?
+[material-ui-tree@next](https://github.com/shallinta/material-ui-tree/tree/next)
+
 ### Installation
 Available as npm package.
 ```sh
@@ -39,21 +42,33 @@ npm install --save
 
 - **className**: *(string)* The `className` will passed to container `Paper` component of material-ui.  
 
-- **labelName**: *(string)* Label key to show in tree leaf data. Default to `'label'`. If `renderLabel` option is set, `labelName` will be ignored.  
+- **[deprecated] labelName**: *(string)* Label key to show in tree leaf data. Default to `'label'`. If `renderLabel` option is set, `labelName` will be ignored.  
 
-- **valueName**: *(string)* Value key in tree leaf data. Used for react children key. Default to `'value'`.  
+- **labelKey**: *(string)* Label key to show in tree leaf data. Default to `'label'`. If `renderLabel` option is set, `labelKey` will be ignored.  
 
-- **childrenName**: *(string)* Children key to render child branch in tree leaf data. Default to `'children'`.  
+- **[deprecated] valueName(deprecated)**: *(string)* Value key in tree leaf data. Used for react children key. Default to `'value'`.  
+
+- **valueKey**: *(string)* Value key in tree leaf data. Used for react children key. Default to `'value'`.  
+
+- **[deprecated] childrenName**: *(string)* Children key to render child branch in tree leaf data. Default to `'children'`.  
+
+- **childrenKey**: *(string)* Children key to render child branch in tree leaf data. Default to `'children'`.  
 
 - **data**: *(object)* Initial tree data. Default to `{}`.  
 
 - **title**: *(string)* Tree title. Default to `''`. If not set, title module will not show.  
 
-- **expandFirst**: *(bool)* Whether expand the first branch of the tree in the beginning. Default to `false`.  
+- **[deprecated] expandFirst**: *(bool)* Whether expand the first branch of the tree in the beginning. Default to `false`.  
 
-- **expandAll**: *(bool)* Whether expand all branches of the tree in the beginning. Default to `false`.  
+- **unfoldFirst**: *(bool)* Whether expand the first branch of the tree in the beginning. Default to `false`.  
 
-- **childrenCountPerPage**: *(number)* Children leafs' count in each branch page. When tree leaf children data is too big, render them by page. Default to `20`.  
+- **[deprecated] expandAll**: *(bool)* Whether expand all branches of the tree in the beginning. Default to `false`.  
+
+- **unfoldAll**: *(bool)* Whether expand all branches of the tree in the beginning. Default to `false`.  
+
+- **[deprecated] childrenCountPerPage**: *(number)* Children leafs' count in each branch page. When tree leaf children data is too big, render them by page. Default to `20`.  
+
+- **pageSize**: *(number)* Children leafs' count in each branch page. When tree leaf children data is too big, render them by page. Default to `20`.  
 
 - **actionsAlignRight**: *(bool)* Whether the tree leaf action buttons aligns to right side. Action buttons will follow behind leaf label if it's false, or else will be aligned to right side. Default to `false`.  
 
