@@ -11,8 +11,6 @@
 > A react tree component with material-ui.  
 > See demo page: [Material-ui-tree Demo](https://94wyyw992r.codesandbox.io/)
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-
 ### What's new with next version?
 - Take full use of material-ui 4.0.0 beta version.
 - Take full use of react hooks, which needs react version 16.8.0 at least.
@@ -70,29 +68,29 @@ npm install --save
 ### Options
 > All options are not required.  
 
-#### Normal properties:
+##### Normal properties:  
 
-|option name | type | meaning | default value | remark |
+|option name | type | default value | remark |
 |---|---|---|---|
-|className|string|The `className` will passed to container `Paper` component of material-ui.| |
-|labelKey|string|Label key to show in tree leaf data.|'label'|If `renderLabel` option is set, `labelKey` will be ignored.|
-|valueKey|string|Value key in tree leaf data. Used for react children key.|'value'||
-|childrenKey|string|Children key to render child branch in tree leaf data.|'children'||  
-|data|object|Initial tree data.|{}||
-|title|string or React Node|Tree title.|''|If not set, title module will not show.|
-|unfoldFirst|bool|Whether unfold the first branch of the tree in the beginning.|false||
-|unfoldAll|bool|Whether unfold all branches of the tree in the beginning.|false||
-|pageSize|number|Children nodes' count in each branch page. When tree node children data is too big, render them by page.|20||
-|actionsAlignRight|bool|Whether the tree node action buttons aligns to right side. Action buttons will follow behind node label if it's false, or else will be aligned to right side.|false||
-|foldIcon|React OptionalElement|Icon of tree node in fold status.|`<AddCircleOutlineIcon />(@material-ui/icons/AddCircleOutline)`|You should pass an react element of icon such as `<ArrowDownIcon />(@material-ui/icons/KeyboardArrowDown)` when you want to modify the icon.|
-|unfoldIcon|React OptionalElement|Icon of tree node in unfold status.|`<RemoveCircleOutlineIcon />(@material-ui/icons/RemoveCircleOutline)`|You should pass an react element of icon such as `<ArrowUpIcon />(@material-ui/icons/KeyboardArrowUp)` when you want to modify the icon.|
-|loadMoreIcon|React OptionalElement|Icon of "load-more" tree node.|`<MoreVertIcon />(@material-ui/icons/MoreVert)`.|You should pass an react element of icon such as `<MoreHorizIcon />(@material-ui/icons/MoreHoriz)` when you want to modify the icon.|
+|className|string|''|The `className` will passed to container `Paper` component of material-ui.|
+|labelKey|string|'label'|Label key to show in tree leaf data. If `renderLabel` option is set, `labelKey` will be ignored.|
+|valueKey|string|'value'|Value key in tree leaf data. Used for react children key.|
+|childrenKey|string|'children'|Children key to render child branch in tree leaf data.|
+|data|object|{}|Initial tree data.|
+|title|string or React Node|''|Tree title. If not set, title module will not show.|
+|unfoldFirst|bool|false|Whether unfold the first branch of the tree in the beginning.|
+|unfoldAll|bool|false|Whether unfold all branches of the tree in the beginning.|
+|pageSize|number|20|Children nodes' count in each branch page. When tree node children data is too big, render them by page.|
+|actionsAlignRight|bool|false|Whether the tree node action buttons aligns to right side. Action buttons will follow behind node label if it's false, or else will be aligned to right side.|
+|foldIcon|React OptionalElement|`<AddCircleOutlineIcon />(@material-ui/icons/AddCircleOutline)`|Icon of tree node in fold status. You should pass an react element of icon such as `<ArrowDownIcon />(@material-ui/icons/KeyboardArrowDown)` when you want to modify the icon.|
+|unfoldIcon|React OptionalElement|`<RemoveCircleOutlineIcon />``(@material-ui/icons/RemoveCircleOutline)`|Icon of tree node in unfold status. You should pass an react element of icon such as `<ArrowUpIcon />(@material-ui/icons/KeyboardArrowUp)` when you want to modify the icon.|
+|loadMoreIcon|React OptionalElement|`<MoreVertIcon />(@material-ui/icons/MoreVert)`.|Icon of "load-more" tree node. You should pass an react element of icon such as `<MoreHorizIcon />(@material-ui/icons/MoreHoriz)` when you want to modify the icon.|
 
-#### Callback properties:
+##### Callback properties:
 
 - **getActionsData**: *(func)* The method to get data to render action buttons, with arguments:  
 
-|argument name|type|meaning|
+|argument name|type|remark|
 |---|---|---|
 |data|object|current node data|  
 |path|array<number>|node indices from tree root|
@@ -103,7 +101,7 @@ Should return an array of buttons data including keys: `icon`, `label`, `hint`, 
 
 - **renderLabel**: *(func)* The method to render tree node label, with arguments:  
 
-|argument name|type|meaning|
+|argument name|type|remark|
 |---|---|---|
 |data|object|current node data|
 |unfoldStatus|bool|current node unfold status|
@@ -112,7 +110,7 @@ If this is set, `labelKey` option will be ignored.
 
 - **renderLoadMoreText**: *(func)* The method to render the "load-more" tree node when there are more than one page of children, with arguments:  
 
-|argument name|type|meaning|
+|argument name|type|remark|
 |---|---|---|
 |page|number|current loaded page index.|
 |pageSize|number|children count of each page.|
@@ -126,7 +124,7 @@ Should return text or react elements. The following templete will be returned by
 
 - **requestChildrenData**: *(func)* The method to request children data of tree node dynamically, with arguments:  
 
-|argument name|type|meaning|
+|argument name|type|remark|
 |---|---|---|
 |data|object|current node data.|
 |path|array<number>|node indices from tree root.|
