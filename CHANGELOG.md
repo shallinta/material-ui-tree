@@ -1,6 +1,10 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.1.1](https://github.com/shallinta/material-ui-tree/compare/v1.1.0...v1.1.1) (2019-05-16)
+
+
 
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/shallinta/material-ui-tree/compare/v1.0.12...v1.1.0) (2019-04-16)
