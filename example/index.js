@@ -1,34 +1,34 @@
-import React, { useState, useCallback } from 'react';
-import ReactDOM from 'react-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Switch from '@material-ui/core/Switch';
-import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import FolderIcon from '@material-ui/icons/Folder';
-import SettingsIcon from '@material-ui/icons/Settings';
-import DescriptionIcon from '@material-ui/icons/Description';
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
-import AddIcon from '@material-ui/icons/Add';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { makeStyles, ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
-import pink from '@material-ui/core/colors/pink';
-import superagent from 'superagent';
-import Tree from './tree-container';
-import getNodeDataByPath from './util';
-import { Typography } from '@material-ui/core';
+import React, { useState, useCallback } from "react";
+import ReactDOM from "react-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Switch from "@material-ui/core/Switch";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import FolderOpenIcon from "@material-ui/icons/FolderOpen";
+import FolderIcon from "@material-ui/icons/Folder";
+import SettingsIcon from "@material-ui/icons/Settings";
+import DescriptionIcon from "@material-ui/icons/Description";
+import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { makeStyles, ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+import blue from "@material-ui/core/colors/blue";
+import pink from "@material-ui/core/colors/pink";
+import superagent from "superagent";
+import Tree from "material-ui-tree";
+import getNodeDataByPath from "material-ui-tree/lib/util";
+import { Typography } from "@material-ui/core";
 
 const theme = createMuiTheme({
   palette: {
     primary: blue,
     secondary: {
-      light: '#ff79b0',
+      light: "#ff79b0",
       main: pink.A200,
-      dark: '#c60055',
-      contrastText: '#fff'
+      dark: "#c60055",
+      contrastText: "#fff"
     }
   }
 });
@@ -41,8 +41,8 @@ const useStyles = makeStyles({
     fontSize: 20
   },
   node: {
-    display: 'flex',
-    alignContent: 'center'
+    display: "flex",
+    alignContent: "center"
   }
 });
 
@@ -51,27 +51,27 @@ const App = () => {
   const [state, setState] = useState({
     alignRight: false,
     data: {
-      path: 'material-ui-tree',
-      type: 'tree',
-      sha: 'b3d36479a033ed6296c34fdf689d5cdbcf7a0136',
+      path: "material-ui-tree",
+      type: "tree",
+      sha: "b3d36479a033ed6296c34fdf689d5cdbcf7a0136",
       url:
-        'https://api.github.com/repos/shallinta/material-ui-tree/git/trees/b3d36479a033ed6296c34fdf689d5cdbcf7a0136'
+        "https://api.github.com/repos/shallinta/material-ui-tree/git/trees/next"
     }
   });
 
   const renderLabel = useCallback(
     (data, unfoldStatus) => {
       const { path, type } = data;
-      let variant = 'body1';
+      let variant = "body1";
       let iconComp = null;
-      if (type === 'tree') {
+      if (type === "tree") {
         iconComp = unfoldStatus ? <FolderOpenIcon /> : <FolderIcon />;
       }
-      if (type === 'blob') {
-        variant = 'body2';
-        if (path.startsWith('.') || path.includes('config')) {
+      if (type === "blob") {
+        variant = "body2";
+        if (path.startsWith(".") || path.includes("config")) {
           iconComp = <SettingsIcon />;
-        } else if (path.endsWith('.js')) {
+        } else if (path.endsWith(".js")) {
           iconComp = <DescriptionIcon />;
         } else {
           iconComp = <InsertDriveFileIcon />;
@@ -92,26 +92,26 @@ const App = () => {
   const getActionsData = useCallback(
     (data, path, unfoldStatus) => {
       const { type } = data;
-      if (type === 'tree') {
+      if (type === "tree") {
         if (!unfoldStatus) {
           return null;
         }
         return {
           icon: <AddIcon className={classes.icon} />,
-          label: 'new',
-          hint: 'Insert file',
+          label: "new",
+          hint: "Insert file",
           onClick: () => {
             const treeData = Object.assign({}, state.data);
-            const nodeData = getNodeDataByPath(treeData, path, 'tree');
+            const nodeData = getNodeDataByPath(treeData, path, "tree");
             if (
-              !Reflect.has(nodeData, 'tree') ||
-              !Reflect.has(nodeData.tree, 'length')
+              !Reflect.has(nodeData, "tree") ||
+              !Reflect.has(nodeData.tree, "length")
             ) {
               nodeData.tree = [];
             }
             nodeData.tree.push({
-              path: 'new file',
-              type: 'blob',
+              path: "new file",
+              type: "blob",
               sha: Math.random()
             });
             setState({ ...state, data: treeData });
@@ -121,13 +121,13 @@ const App = () => {
       return [
         {
           icon: <DeleteIcon color="secondary" className={classes.icon} />,
-          hint: 'Delete file',
+          hint: "Delete file",
           onClick: () => {
             const treeData = Object.assign({}, state.data);
             const parentData = getNodeDataByPath(
               treeData,
               path.slice(0, path.length - 1),
-              'tree'
+              "tree"
             );
             const lastIndex = path[path.length - 1];
             parentData.tree.splice(lastIndex, 1);
@@ -142,11 +142,11 @@ const App = () => {
   const requestChildrenData = useCallback(
     (data, path, toggleFoldStatus) => {
       const { url, type } = data;
-      if (type === 'tree') {
+      if (type === "tree") {
         superagent.get(url).then(({ body: res }) => {
           if (res && res.tree) {
             const treeData = Object.assign({}, state.data);
-            getNodeDataByPath(treeData, path, 'tree').tree = res.tree;
+            getNodeDataByPath(treeData, path, "tree").tree = res.tree;
             setState({
               ...state,
               data: treeData
@@ -184,7 +184,7 @@ const App = () => {
         renderLabel={renderLabel}
         renderLoadMoreText={(page, pageSize, total) =>
           `Loaded: ${(page + 1) *
-          pageSize} / Total: ${total}. Click here to load more...`
+            pageSize} / Total: ${total}. Click here to load more...`
         }
         pageSize={5}
         actionsAlignRight={state.alignRight}
@@ -195,4 +195,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<App />, document.querySelector("#root"));
