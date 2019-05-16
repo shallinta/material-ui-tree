@@ -10,11 +10,11 @@
     "react hooks"
   ],
   "author": "John Chan",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "main": "index.cjs.js",
   "module": "index.es.js",
   "files": [
-    "dist/*"
+    "dist/**"
   ],
   "sideEffects": false,
   "license": "MIT",
