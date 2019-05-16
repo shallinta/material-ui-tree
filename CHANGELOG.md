@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-alpha.2](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2019-05-16)
+
+
+### Bug Fixes
+
+* move util to single directory to fix the error "could not find module" ([8173798](https://github.com/shallinta/material-ui-tree/commit/8173798))
+
+
+
 ## [2.0.0-alpha.1](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.0...v2.0.0-alpha.1) (2019-05-16)
 
 
