@@ -10,7 +10,7 @@
     "react hooks"
   ],
   "author": "John Chan",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "files": [
