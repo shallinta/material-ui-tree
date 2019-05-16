@@ -71,43 +71,84 @@ var MuiTree = function (_React$Component) {
     value: function getChildContext() {
       var _props = this.props,
           labelName = _props.labelName,
+          labelKey = _props.labelKey,
           valueName = _props.valueName,
+          valueKey = _props.valueKey,
           childrenName = _props.childrenName,
+          childrenKey = _props.childrenKey,
           expandFirst = _props.expandFirst,
+          unfoldFirst = _props.unfoldFirst,
           expandAll = _props.expandAll,
+          unfoldAll = _props.unfoldAll,
           actionsAlignRight = _props.actionsAlignRight,
           foldIcon = _props.foldIcon,
           unfoldIcon = _props.unfoldIcon,
           getActionsData = _props.getActionsData,
           renderLabel = _props.renderLabel,
           requestChildrenData = _props.requestChildrenData,
-          childrenCountPerPage = _props.childrenCountPerPage;
+          childrenCountPerPage = _props.childrenCountPerPage,
+          pageSize = _props.pageSize;
 
       return {
         tree: {
-          labelName: labelName,
-          valueName: valueName,
-          childrenName: childrenName,
-          expandFirst: expandFirst,
-          expandAll: expandAll,
+          labelName: labelKey || labelName,
+          valueName: valueKey || valueName,
+          childrenName: childrenKey || childrenName,
+          expandFirst: unfoldFirst || expandFirst,
+          expandAll: unfoldAll || expandAll,
           actionsAlignRight: actionsAlignRight,
           foldIcon: foldIcon,
           unfoldIcon: unfoldIcon,
           getActionsData: getActionsData,
           renderLabel: renderLabel,
           requestChildrenData: requestChildrenData,
-          childrenCountPerPage: childrenCountPerPage
+          childrenCountPerPage: pageSize || childrenCountPerPage
         }
       };
     }
   }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _props2 = this.props,
+          labelName = _props2.labelName,
+          valueName = _props2.valueName,
+          childrenName = _props2.childrenName,
+          expandFirst = _props2.expandFirst,
+          expandAll = _props2.expandAll,
+          childrenCountPerPage = _props2.childrenCountPerPage;
+
+      if (labelName !== 'label') {
+        this.log('labelName', 'labelKey');
+      }
+      if (valueName !== 'value') {
+        this.log('valueName', 'valueKey');
+      }
+      if (childrenName !== 'children') {
+        this.log('childrenName', 'childrenKey');
+      }
+      if (expandFirst) {
+        this.log('expandFirst', 'unfoldFirst');
+      }
+      if (expandAll) {
+        this.log('expandAll', 'unfoldAll');
+      }
+      if (childrenCountPerPage !== 20) {
+        this.log('childrenCountPerPage', 'pageSize');
+      }
+    }
+  }, {
+    key: 'log',
+    value: function log(key, nextKey) {
+      console.warn('The property `' + key + '` is deprecated, and it will be completely removed at next major version. please use `' + nextKey + '` instead.');
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _props2 = this.props,
-          classes = _props2.classes,
-          className = _props2.className,
-          data = _props2.data,
-          title = _props2.title;
+      var _props3 = this.props,
+          classes = _props3.classes,
+          className = _props3.className,
+          data = _props3.data,
+          title = _props3.title;
 
 
       return _react2.default.createElement(
@@ -129,13 +170,19 @@ var MuiTree = function (_React$Component) {
 MuiTree.defaultProps = {
   className: '',
   labelName: 'label',
+  labelKey: '',
   valueName: 'value',
+  valueKey: '',
   childrenName: 'children',
+  childrenKey: '',
   data: {},
   title: '',
   expandFirst: false,
+  unfoldFirst: false,
   expandAll: false,
+  unfoldAll: false,
   childrenCountPerPage: 20,
+  pageSize: 0,
   actionsAlignRight: false,
   foldIcon: _react2.default.createElement(_AddCircleOutline2.default, null),
   unfoldIcon: _react2.default.createElement(_RemoveCircleOutline2.default, null),
@@ -147,13 +194,19 @@ MuiTree.propTypes = {
   classes: _propTypes2.default.object.isRequired,
   className: _propTypes2.default.string,
   labelName: _propTypes2.default.string,
+  labelKey: _propTypes2.default.string,
   valueName: _propTypes2.default.string,
+  valueKey: _propTypes2.default.string,
   childrenName: _propTypes2.default.string,
+  childrenKey: _propTypes2.default.string,
   data: _propTypes2.default.object,
   title: _propTypes2.default.string,
   expandFirst: _propTypes2.default.bool,
+  unfoldFirst: _propTypes2.default.bool,
   expandAll: _propTypes2.default.bool,
+  unfoldAll: _propTypes2.default.bool,
   childrenCountPerPage: _propTypes2.default.number,
+  pageSize: _propTypes2.default.number,
   actionsAlignRight: _propTypes2.default.bool,
   foldIcon: _propTypes2.default.element,
   unfoldIcon: _propTypes2.default.element,
