@@ -1,50 +1,66 @@
 {
   "name": "material-ui-tree",
   "homepage": "https://github.com/shallinta/material-ui-tree",
-  "keywords": "tree, react, component, material design, material-ui",
-  "author": "johnch",
+  "keywords": [
+    "tree",
+    "material-ui-tree",
+    "material design",
+    "material-ui",
+    "react component",
+    "react hooks"
+  ],
+  "author": "John Chan",
   "version": "1.1.0",
-  "main": "dist/component/index.js",
-  "module": "src/component/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
   "files": [
     "dist"
   ],
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && babel src -d dist",
-    "lint": "eslint --quiet \"**/*.js\"",
-    "release": "standard-version",
+    "build": "rollup -c",
     "prepare": "npm run build",
-    "prepublishOnly": "git push && git push origin --tags"
+    "release": "standard-version && npm publish",
+    "release:minor": "standard-version --release-as minor && npm publish",
+    "release:major": "standard-version --release-as major && npm publish",
+    "release:pre": "npm run release:alpha",
+    "release:alpha": "standard-version --prerelease alpha && npm publish",
+    "release:beta": "standard-version --prerelease beta && npm publish",
+    "postrelease": "git push && git push origin --tags",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@material-ui/core": "^1.5.1",
-    "@material-ui/icons": "^2.0.3",
+    "@material-ui/core": "^4.0.0-beta.1",
+    "@material-ui/icons": "^4.0.0-beta.0",
+    "@material-ui/styles": "^4.0.0-beta.1",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "rollup": "^1.11.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-eslint": "^5.1.0",
+    "rollup-plugin-terser": "^4.0.4",
+    "standard-version": "^6.0.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "engines": {
     "node": ">=4.0",
     "npm": ">=3.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.19",
-    "eslint": "^5.16.0",
-    "eslint-config-qunar": "^3.0.0",
-    "eslint-plugin-import": "^2.17.1",
-    "rimraf": "^2.6.3",
-    "standard-version": "^4.4.0",
-    "superagent": "^3.8.3"
   }
 }
