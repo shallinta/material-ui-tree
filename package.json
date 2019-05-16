@@ -10,7 +10,7 @@
     "react hooks"
   ],
   "author": "John Chan",
-  "version": "1.1.0",
+  "version": "2.0.0-alpha.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "files": [
@@ -25,9 +25,11 @@
     "release:minor": "standard-version --release-as minor && npm publish",
     "release:major": "standard-version --release-as major && npm publish",
     "release:pre": "npm run release:alpha",
-    "release:alpha": "standard-version --prerelease alpha && npm publish",
-    "release:beta": "standard-version --prerelease beta && npm publish",
+    "release:alpha": "standard-version --prerelease alpha && npm publish --tag next",
+    "release:beta": "standard-version --prerelease beta && npm publish --tag next",
     "postrelease": "git push && git push origin --tags",
+    "postrelease:alpha": "git push && git push origin --tags",
+    "postrelease:beta": "git push && git push origin --tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
