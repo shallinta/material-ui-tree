@@ -5,10 +5,10 @@ import { terser } from 'rollup-plugin-terser';
 export default [{
   input: 'src/index.js',
   output: [{
-    file: './dist/index.cjs.js',
+    file: './lib/index.cjs.js',
     format: 'cjs'
   }, {
-    file: './dist/index.es.js',
+    file: './lib/index.es.js',
     format: 'es'
   }],
   external: ['react', 'react-dom', 'prop-types', 'classnames', '@material-ui/core@next', '@material-ui/icons@next', '@material-ui/styles@next'],
@@ -27,10 +27,10 @@ export default [{
 }, {
   input: 'src/util.js',
   output: [{
-    file: './util/index.cjs.js',
+    file: './lib/util.cjs.js',
     format: 'cjs'
   }, {
-    file: './util/index.es.js',
+    file: './lib/util.js',
     format: 'es'
   }],
   plugins: [

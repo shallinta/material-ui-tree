@@ -36,7 +36,7 @@
   - `unfoldStatus`: instead of old <del>expand</del>
   - `toggleFoldStatus`: instead of old <del>doExpand</del>
 - Util provided:
-  - You can import `getNodeDataByPath, { withChildrenKey }` from "material-ui-tree/util" which is used to get tree node data with whole tree data and node path and children key.  
+  - You can import `getNodeDataByPath, { withChildrenKey }` from "material-ui-tree/lib/util" which is used to get tree node data with whole tree data and node path and children key.  
   - Function signature:
     1. getNodeDataByPath:: (object, array, string) -> object.
     2. withChildrenKey:: string -> (object, array) -> object.
