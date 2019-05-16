@@ -27,10 +27,10 @@ export default [{
 }, {
   input: 'src/util.js',
   output: [{
-    file: './dist/util.cjs.js',
+    file: './util/index.cjs.js',
     format: 'cjs'
   }, {
-    file: './dist/util.es.js',
+    file: './util/index.es.js',
     format: 'es'
   }],
   plugins: [
