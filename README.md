@@ -9,7 +9,7 @@
 
 [![NPM](https://nodei.co/npm/material-ui-tree.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/material-ui-tree)
 > A react tree component with material-ui.  
-> See demo page: [Material-ui-tree Demo](https://94wyyw992r.codesandbox.io/)
+> See demo page: [Material-ui-tree Demo (next version)](https://94wyyw992r.codesandbox.io/)
 
 ### What's new with next version?
 - Take full use of material-ui 4.0.0 beta version.
@@ -60,7 +60,7 @@ npm install --save
 
 
 ### Usage
->  See demo page code:  
+>  See demo page code: (next version)  
 
 [![Edit material-ui-tree@next demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/94wyyw992r?fontsize=14)
 
