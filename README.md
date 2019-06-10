@@ -42,6 +42,7 @@
     1. getNodeDataByPath:: (object, array, string) -> object.
     2. withChildrenKey:: string -> (object, array) -> object.
 
+
 ### Installation
 Available as npm package.
 ```sh

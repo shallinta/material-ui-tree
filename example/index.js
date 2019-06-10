@@ -178,15 +178,15 @@ const App = () => {
         labelKey="path"
         valueKey="sha"
         childrenKey="tree"
-        foldIcon={<ArrowDropUpIcon />}
-        unfoldIcon={<ArrowDropDownIcon />}
+        foldIcon={<ArrowDropDownIcon />}
+        unfoldIcon={<ArrowDropUpIcon />}
         loadMoreIcon={<MoreHorizIcon />}
         renderLabel={renderLabel}
         renderLoadMoreText={(page, pageSize, total) =>
           `Loaded: ${(page + 1) *
             pageSize} / Total: ${total}. Click here to load more...`
         }
-        pageSize={5}
+        pageSize={10}
         actionsAlignRight={state.alignRight}
         getActionsData={getActionsData}
         requestChildrenData={requestChildrenData}
