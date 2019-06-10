@@ -53,50 +53,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-## [2.0.0-beta.0](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.6...v2.0.0-beta.0) (2019-05-16)
-
-
-
-## [2.0.0-alpha.6](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2019-05-16)
-
-
-
-## [2.0.0-alpha.5](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2019-05-16)
-
-
-
-## [2.0.0-alpha.4](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2019-05-16)
-
-
-
-## [2.0.0-alpha.3](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2019-05-16)
-
-
-
-## [2.0.0-alpha.2](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2019-05-16)
-
-
-### Bug Fixes
-
-* move util to single directory to fix the error "could not find module" ([8173798](https://github.com/shallinta/material-ui-tree/commit/8173798))
-
-
-
-## [2.0.0-alpha.1](https://github.com/shallinta/material-ui-tree/compare/v2.0.0-alpha.0...v2.0.0-alpha.1) (2019-05-16)
-
-
-
-## [2.0.0-alpha.0](https://github.com/shallinta/material-ui-tree/compare/v1.1.0...v2.0.0-alpha.0) (2019-05-16)
-
-
-### Features
-
-* Add `loadMoreIcon` and `renderLoadMoreText` properties. ([26d72cd](https://github.com/shallinta/material-ui-tree/commit/26d72cd))
-
-
-### BREAKING CHANGES
-
-* Upgrade material-ui to 4.0.0 beta version and upgrade react to 16.8.* version. Change some properties\' name or type.
 ### [1.1.1](https://github.com/shallinta/material-ui-tree/compare/v1.1.0...v1.1.1) (2019-05-16)
 
 
