@@ -20,7 +20,7 @@
 
 ### Migration from material-ui-tree v1.*
 - You should first learn about material-ui@4.* which is the strong dependence. [See material-ui](https://material-ui.com/)
-- If you use material-ui v3 now, see this to migration to v4. [Material UI v4 migration from v3](https://material-ui.com/guides/migration-v3/)
+- If you use material-ui v3 now, see this to migrate to v4. [Material UI v4 migration from v3](https://material-ui.com/guides/migration-v3/)
 - To support the v2 version, you should upgrade your react and react-dom version to at least v16.8.0.
 - Changed properties:
   - `title`: change type <del>"string"</del> to "string | React Node".

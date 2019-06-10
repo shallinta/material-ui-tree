@@ -11,7 +11,7 @@ export default [{
     file: './lib/index.es.js',
     format: 'es'
   }],
-  external: ['react', 'react-dom', 'prop-types', 'classnames', '@material-ui/core@next', '@material-ui/icons@next', '@material-ui/styles@next'],
+  external: ['react', 'react-dom', 'prop-types', 'classnames', '@material-ui/core', '@material-ui/icons', '@material-ui/styles'],
   plugins: [
     eslint({
       throwOnError: true,
