@@ -1,4 +1,4 @@
-# material-ui-tree@next
+# material-ui-tree
 [![npm package](https://img.shields.io/npm/v/material-ui-tree.svg)](https://www.npmjs.org/package/material-ui-tree)
 [![npm download](https://img.shields.io/npm/dt/material-ui-tree.svg)](https://www.npmjs.org/package/material-ui-tree)
 [![github license](https://img.shields.io/github/license/shallinta/material-ui-tree.svg)](https://github.com/shallinta/material-ui-tree/blob/master/LICENSE)
@@ -9,18 +9,19 @@
 
 [![NPM](https://nodei.co/npm/material-ui-tree.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/material-ui-tree)
 > A react tree component with material-ui.  
-> See demo page: [Material-ui-tree Demo (next version)](https://94wyyw992r.codesandbox.io/)
+> See demo page: [Material-ui-tree Demo (v2 version)](https://94wyyw992r.codesandbox.io/)
 
-### What's new with next version?
-- Take full use of material-ui 4.0.0 beta version.
-- Take full use of react hooks, which needs react version 16.8.0 at least.
+### What's new with v2 version?
+- Take full use of material-ui ^4.0.0 version. (Including `@material-ui/core^4.0.0`, `@material-ui/styles^4.0.0` and `@material-ui/icons^4.0.0`.)
+- Take full use of react hooks, which needs react version ^16.8.0.
 - Change some props name to make more sense.
 - Add some props to adapt to more usage scenarios.
 - Use rollup to pack and compress this component.
 
 ### Migration from material-ui-tree v1.*
-- You should first learn about material-ui@4.* which is the strong dependence. [See material-ui@next](https://next.material-ui.com/)
-- To support the next version, you should upgrade your react and react-dom version to at least v16.8.0.
+- You should first learn about material-ui@4.* which is the strong dependence. [See material-ui](https://material-ui.com/)
+- If you use material-ui v3 now, see this to migration to v4. [Material UI v4 migration from v3](https://material-ui.com/guides/migration-v3/)
+- To support the v2 version, you should upgrade your react and react-dom version to at least v16.8.0.
 - Changed properties:
   - `title`: change type <del>"string"</del> to "string | React Node".
   - `labelKey`: instead of old <del>labelName</del>
@@ -44,7 +45,7 @@
 ### Installation
 Available as npm package.
 ```sh
-npm install --save material-ui-tree@next
+npm install --save material-ui-tree@latest
 ```
 Ensure to install these packages in your program because `material-ui-tree` depends on them.
 ```sh
@@ -53,16 +54,16 @@ npm install --save
  react-dom
  prop-types
  classnames
- @material-ui/core@next
- @material-ui/icons@next
- @material-ui/styles@next
+ @material-ui/core
+ @material-ui/icons
+ @material-ui/styles
 ```
 
 
 ### Usage
->  See demo page code: (next version)  
+>  See demo page code: (v2)  
 
-[![Edit material-ui-tree@next demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/94wyyw992r?fontsize=14)
+[![Edit material-ui-tree v2 demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/94wyyw992r?fontsize=14)
 
 
 ### Options
