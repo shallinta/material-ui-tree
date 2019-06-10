@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/shallinta/material-ui-tree/compare/v2.0.0...v2.0.1) (2019-06-10)
+
+
+### Bug Fixes
+
+* rollup config external packages version mistake ([71178b2](https://github.com/shallinta/material-ui-tree/commit/71178b2))
+
+
+
 ## [2.0.0](https://github.com/shallinta/material-ui-tree/compare/v1.1.1...v2.0.0) (2019-06-10)
 
 
