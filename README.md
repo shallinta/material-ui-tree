@@ -85,7 +85,7 @@ npm install --save
 |pageSize|number|20|Children nodes' count in each branch page. When tree node children data is too big, render them by page.|
 |actionsAlignRight|bool|false|Whether the tree node action buttons aligns to right side. Action buttons will follow behind node label if it's false, or else will be aligned to right side.|
 |foldIcon|React OptionalElement|`<AddCircleOutlineIcon />(@material-ui/icons/AddCircleOutline)`|Icon of tree node in fold status. You should pass an react element of icon such as `<ArrowDownIcon />(@material-ui/icons/KeyboardArrowDown)` when you want to modify the icon.|
-|unfoldIcon|React OptionalElement|`<RemoveCircleOutlineIcon />`(@material-ui/icons/RemoveCircleOutline)`|Icon of tree node in unfold status. You should pass an react element of icon such as `<ArrowUpIcon />(@material-ui/icons/KeyboardArrowUp)` when you want to modify the icon.|
+|unfoldIcon|React OptionalElement|`<RemoveCircleOutlineIcon />(@material-ui/icons/RemoveCircleOutline)`|Icon of tree node in unfold status. You should pass an react element of icon such as `<ArrowUpIcon />(@material-ui/icons/KeyboardArrowUp)` when you want to modify the icon.|
 |loadMoreIcon|React OptionalElement|`<MoreVertIcon />(@material-ui/icons/MoreVert)`.|Icon of "load-more" tree node. You should pass an react element of icon such as `<MoreHorizIcon />(@material-ui/icons/MoreHoriz)` when you want to modify the icon.|
 
 ##### Callback properties:
