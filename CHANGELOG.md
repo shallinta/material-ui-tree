@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2-alpha.0](https://github.com/shallinta/material-ui-tree/compare/v2.0.1...v2.0.2-alpha.0) (2019-07-12)
+
+
+### Bug Fixes
+
+* try to fix bug ([8c50007](https://github.com/shallinta/material-ui-tree/commit/8c50007))
+
+
+
 ### [2.0.1](https://github.com/shallinta/material-ui-tree/compare/v2.0.0...v2.0.1) (2019-06-10)
 
 
