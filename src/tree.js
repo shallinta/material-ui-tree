@@ -32,7 +32,9 @@ const Tree = (props) => {
   const pageCount = Math.ceil(children.length / pageSize);
   const [page, setPage] = useState(0);
 
-  const toggleFoldStatus = useCallback(() => setUnfoldStatus(!unfoldStatus), [
+  const toggleFoldStatus = useCallback(() => {
+    setUnfoldStatus(!unfoldStatus);
+  }, [
     unfoldStatus,
     setUnfoldStatus
   ]);

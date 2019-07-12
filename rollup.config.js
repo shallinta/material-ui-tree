@@ -30,7 +30,7 @@ export default [{
     file: './lib/util.cjs.js',
     format: 'cjs'
   }, {
-    file: './lib/util.js',
+    file: './lib/util.es.js',
     format: 'es'
   }],
   plugins: [
