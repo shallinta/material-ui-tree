@@ -22,7 +22,9 @@ export default [{
     babel({
       exclude: 'node_modules/**'
     }),
-    terser()
+    terser({
+      keep_fnames: true
+    })
   ],
 }, {
   input: 'src/util.js',
