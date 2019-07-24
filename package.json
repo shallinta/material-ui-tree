@@ -14,8 +14,10 @@
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
   "files": [
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
+  "typings": "index.d.ts",
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
