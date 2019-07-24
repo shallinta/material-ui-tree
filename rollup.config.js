@@ -1,6 +1,7 @@
 import babel from 'rollup-plugin-babel';
 import { eslint } from 'rollup-plugin-eslint';
 import { terser } from 'rollup-plugin-terser';
+import copy from 'rollup-plugin-copy';
 
 export default [{
   input: 'src/index.js',
@@ -24,6 +25,11 @@ export default [{
     }),
     terser({
       keep_fnames: true
+    }),
+    copy({
+      targets: [
+        { src: 'types/index.d.ts', dest: 'lib' }
+      ]
     })
   ],
 }, {
@@ -45,6 +51,11 @@ export default [{
     babel({
       exclude: 'node_modules/**'
     }),
-    terser()
+    terser(),
+    copy({
+      targets: [
+        { src: 'types/util.d.ts', dest: 'lib' }
+      ]
+    })
   ],
 }];

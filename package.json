@@ -14,10 +14,9 @@
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
   "files": [
-    "lib",
-    "index.d.ts"
+    "lib"
   ],
-  "typings": "index.d.ts",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
@@ -55,6 +54,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "rollup": "^1.11.3",
     "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-copy": "^3.0.0",
     "rollup-plugin-eslint": "^5.1.0",
     "rollup-plugin-terser": "^5.1.1",
     "standard-version": "^6.0.1"
