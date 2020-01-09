@@ -34,6 +34,20 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@bit/mui-org.material-ui-icons.keyboard-arrow-down": "^3.9.2",
+    "@bit/mui-org.material-ui-icons.keyboard-arrow-up": "^3.9.2",
+    "@bit/mui-org.material-ui-icons.more-vert": "^3.9.2",
+    "@bit/mui-org.material-ui.button": "^4.5.2",
+    "@bit/mui-org.material-ui.collapse": "^4.5.2",
+    "@bit/mui-org.material-ui.icon-button": "^4.5.2",
+    "@bit/mui-org.material-ui.list": "^4.5.2",
+    "@bit/mui-org.material-ui.list-item": "^4.5.2",
+    "@bit/mui-org.material-ui.list-item-icon": "^4.5.2",
+    "@bit/mui-org.material-ui.list-item-text": "^4.5.2",
+    "@bit/mui-org.material-ui.paper": "^4.5.2",
+    "@bit/mui-org.material-ui.styles": "^4.5.2",
+    "@bit/mui-org.material-ui.tooltip": "^4.5.2",
+    "@bit/mui-org.material-ui.typography": "^4.5.2",
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",
     "@material-ui/styles": "^4.0.2",
@@ -66,5 +80,12 @@
   "engines": {
     "node": ">=4.0",
     "npm": ">=3.0"
+  },
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/react@1.0.11"
+    },
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm"
   }
 }
