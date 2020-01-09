@@ -11,6 +11,15 @@
 > A react tree component with material-ui.  
 > See demo page: [Material-ui-tree Demo (v2 version)](https://94wyyw992r.codesandbox.io/)
 
+### Using material-ui on 'bit.dev' ?
+- If you use material-ui components on `bit.dev`, you can alse use this material-ui-tree component on the `bit`.
+See also [@bit/shallinta.material-ui-tree](https://bit.dev/shallinta/material-ui-tree).
+```sh
+npm install @bit/shallinta.material-ui-tree.material-ui-tree --save
+npm install @bit/shallinta.material-ui-tree.util --save
+```
+- What is `bit`? Go and see [bit.dev](https://bit.dev/).
+
 ### What's new with v2 version?
 - Take full use of material-ui ^4.0.0 version. (Including `@material-ui/core^4.0.0`, `@material-ui/styles^4.0.0` and `@material-ui/icons^4.0.0`.)
 - Take full use of react hooks, which needs react version ^16.8.0.
