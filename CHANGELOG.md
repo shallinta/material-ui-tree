@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/shallinta/material-ui-tree/compare/v2.1.2...v2.2.0) (2020-05-06)
+
+
+### Bug Fixes
+
+* Fix "e.spacing is not a function" because of new version of material-ui. [#26](https://github.com/shallinta/material-ui-tree/issues/26) ([3407fd0](https://github.com/shallinta/material-ui-tree/commit/3407fd0))
+
+
+### Features
+
+* support component on bit.dev ([17f81d9](https://github.com/shallinta/material-ui-tree/commit/17f81d9))
+
+
+
 ### [2.1.2](https://github.com/shallinta/material-ui-tree/compare/v2.1.1...v2.1.2) (2019-07-24)
 
 
