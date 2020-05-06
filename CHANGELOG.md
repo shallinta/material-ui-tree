@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.2](https://github.com/shallinta/material-ui-tree/compare/v2.2.1...v2.2.2) (2020-05-06)
+
+
+### Bug Fixes
+
+* Fix dependence error of bit in npm package ([e34d2bc](https://github.com/shallinta/material-ui-tree/commit/e34d2bc))
+
+
+
 ### [2.2.1](https://github.com/shallinta/material-ui-tree/compare/v2.2.1-beta.1...v2.2.1) (2020-05-06)
 
 
