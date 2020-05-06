@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
 import Switch from "@material-ui/core/Switch";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -12,14 +13,16 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles, ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  ThemeProvider,
+  createMuiTheme
+} from "@material-ui/core/styles";
 import blue from "@material-ui/core/colors/blue";
 import pink from "@material-ui/core/colors/pink";
 import superagent from "superagent";
 import Tree from "material-ui-tree";
 import getNodeDataByPath from "material-ui-tree/lib/util";
-import { Typography } from "@material-ui/core";
 
 const theme = createMuiTheme({
   palette: {
