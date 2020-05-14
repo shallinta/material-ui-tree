@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.3](https://github.com/shallinta/material-ui-tree/compare/v2.2.2...v2.2.3) (2020-05-14)
+
+
+### Bug Fixes
+
+* Provide original event object when clicking tree leaf buttons. [#27](https://github.com/shallinta/material-ui-tree/issues/27) ([fe320c7](https://github.com/shallinta/material-ui-tree/commit/fe320c7))
+
+
+
 ### [2.2.2](https://github.com/shallinta/material-ui-tree/compare/v2.2.1...v2.2.2) (2020-05-06)
 
 
