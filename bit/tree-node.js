@@ -48,7 +48,7 @@ const TreeNode = (props) => {
     onBtnClick => (e) => {
       e.preventDefault();
       e.stopPropagation();
-      onBtnClick();
+      onBtnClick(e);
     },
     []
   );

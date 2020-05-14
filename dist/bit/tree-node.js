@@ -79,7 +79,7 @@ var TreeNode = function TreeNode(props) {
     return function (e) {
       e.preventDefault();
       e.stopPropagation();
-      onBtnClick();
+      onBtnClick(e);
     };
   }, []);
   var actions = (0, _react.useMemo)(function () {
