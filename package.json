@@ -33,15 +33,6 @@
     "postrelease:beta": "git push && git push origin --tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@material-ui/core": "^4.9.13",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/styles": "^4.9.13",
-    "classnames": "^2.2.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -57,11 +48,16 @@
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-eslint": "^5.1.0",
     "rollup-plugin-terser": "^5.3.0",
-    "standard-version": "^6.0.1"
+    "standard-version": "^9.3.1"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "@material-ui/core": "^4.9.13",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.9.13",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "engines": {
     "node": ">=4.0",
